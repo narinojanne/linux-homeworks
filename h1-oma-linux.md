@@ -36,26 +36,38 @@ Lopuksi vielä asensin Teron ohjeiden mukaan ufw palomuurin ja VirtualBox Guest 
 
 ![kuva1](/pictures/newVM2.png)
 
-Tässä määrittelin käytettävät resurssit
+Tässä määrittelin käytettävät resurssit.
 
 ![kuva2](/pictures/newVM5.png)
 
+Virtuaalikoneen asennuksen käynnistys.
+
 ![kuva3](/pictures/newVM6.png)
+Näppäimistön testaus ja asettelun muuttaminen komennolla setxkbmap fi.
 
 ![kuva4](/pictures/newVM7.png)
+Calamares installerin käynnistys työpöydän Install Debian kuvakkeesta ja järjestelmän kielen asetus.
 
 ![kuva5](/pictures/newVM8.png)
+Sijainnin asettaminen.
 
 ![kuva6](/pictures/newVM9.png)
+Näppäimistön asettaminen.
 
 ![kuva7](/pictures/newVM10.png)
+Levyn alustus.
 
 ![kuva8](/pictures/newVM11.png)
+Käyttäjänimen ja salasanan luominen.
 
 ![kuva9](/pictures/newVM12.png)
+Yhteenveto asetuksista ja asennuksen aloitus.
 
 ![kuva10](/pictures/newVM13.png)
+Asennus menossa.
 
 ![kuva11](/pictures/newVM14.png)
+Asennus valmis ja odottaa uudelleen käynnistystä.
 
 ![kuva12](/pictures/newVM17.png)
+Jouduin pakottamaan virtuaalikoneen sammutuksen sulkemalla virtuaalikoneen oikean yläkulman rastista ja valitsemalla Power off the machine.
