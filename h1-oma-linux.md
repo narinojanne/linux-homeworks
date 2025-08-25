@@ -12,10 +12,13 @@
 
 # Linuxin asentaminen virtuaalikoneeseen
 
+## VirtualBox
 Aloitin asennuksen lataamalla VirtualBoxin asennustiedoston [täältä](https://www.virtualbox.org/wiki/Downloads) ja käynnistämällä asennuksen.  
 Asennuksen alussa sain ilmoituksen puuttuvista python core ja win32api.bindings paketeista. Googletin mitä tämä tarkoittaa ja sain selville, että näitä ei välttämättä tarvita.  
 Tieto löytyy [täältä](https://forums.virtualbox.org/viewtopic.php?t=108582).  
 Aloitin VirtualBoxin asennuksen uudelleen ja jätin python paketin pois asennuksesta, jolloin asennus meni läpi ja VirtualBox lähti myös käyntiin.  
+
+## Debian asennus
 Seuraavaksi latasin Debian 13 levykuvan Johannan [ohjeiden](https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-20082025.md) mukaisesti.  
 Latauksen jälkeen tarkistin, että lataamani tiedoston sha512sum merkkijono on sama kuin lataussivulta löytyvä sha512sum.  
 Aloitin uuden virtuaalikoneen asentamisen seuraamalla samaa Johannan ohjetta, jonka avulla latasin Debian levykuvan.  
