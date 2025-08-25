@@ -35,3 +35,27 @@ Lopuksi vielä asensin Teron ohjeiden mukaan ufw palomuurin ja VirtualBox Guest 
 ## Kuvat asennuksesta
 
 ![kuva1](/pictures/newVM2.png)
+
+Tässä määrittelin käytettävät resurssit
+
+![kuva2](/pictures/newVM5.png)
+
+![kuva3](/pictures/newVM6.png)
+
+![kuva4](/pictures/newVM7.png)
+
+![kuva5](/pictures/newVM8.png)
+
+![kuva6](/pictures/newVM9.png)
+
+![kuva7](/pictures/newVM10.png)
+
+![kuva8](/pictures/newVM11.png)
+
+![kuva9](/pictures/newVM12.png)
+
+![kuva10](/pictures/newVM13.png)
+
+![kuva11](/pictures/newVM14.png)
+
+![kuva12](/pictures/newVM17.png)
