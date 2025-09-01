@@ -16,7 +16,7 @@ Olinkin jo asentanut tämän aikaisemmin.
 
 ![kuva02](/pictures/h2/micro-start.png)
 
-Micro-editor käynnistyy komennolla micro ja avaa tyhjän tiedoston.
+Micro-editor käynnistyy komennolla: micro ja avaa tyhjän tiedoston.
 
 ---
 
@@ -47,13 +47,13 @@ Tiedosto tallentui minulla siihen hakemistoon missä olin kun käynnistin micro-
 
 ![kuva07](/pictures/h2/micro-testi5.png)
 
-Käytin komentoa find -name testimicro.txt selvittääkseni tiedoston sijainnin.
+Käytin komentoa: find -name testimicro.txt selvittääkseni tiedoston sijainnin.
 
 ---
 
 ![kuva07](/pictures/h2/micro-testi6.png)
 
-Komento micro testimicro.txt avaa tiedoston
+Komento: micro testimicro.txt avaa tiedoston
 
 ---
 
@@ -65,8 +65,42 @@ Tiedosto avattuna uudelleen. Ctrl + q lopettaa ohjelman.
 
 # APT
 
-Ohjelmia voi asentaa monta kerralla antamalla apt-get install komennolle asennettavien ohjelmien nimet.  
-Asensin ohjelmat, käyttämällä komentoa: sudo apt-get install cowsay
+- Ohjelmia voi asentaa monta kerralla antamalla apt-get install komennolle asennettavien ohjelmien nimet.
+
+![kuva09](/pictures/h2/install-multiple.png)
+
+Asensin ohjelmat cowsay, cmatrix ja lolcat käyttämällä komentoa: sudo apt-get install cowsay cmatrix lolcat.
+
+---
+
+![kuva10](/pictures/h2/install-multiple2.png)
+
+Piti asentaa myös monta riippuvuutta.
+
+---
+
+![kuva11](/pictures/h2/lolcat1.png)
+
+Komento: lolcat -h avaa lolcatin help näkymän ja lisää siihen värejä.  
+Komento: date | lolcat -a näyttää päivämäärän animoidusti vaihtuvilla väreillä, kesto pari sekuntia.
+
+---
+
+![kuva12](/pictures/h2/cowsay1.png)
+
+Komento: cowsay Hello! piirtää terminaaliin lehmän kuvan joka sanoo Hello!
+
+---
+
+![kuva13](/pictures/h2/cmatrix1.png)
+
+---
+
+![kuva14](/pictures/h2/cmatrix2.png)
+
+Komennolla: cmatrix terminaaliin ilmestyy Matrix elokuvan tyylinen näkymä jossa vihreitä merkkejä tippuu näytöllä alaspäin.
+
+---
 
 # FHS
 
@@ -78,7 +112,9 @@ Asensin ohjelmat, käyttämällä komentoa: sudo apt-get install cowsay
 
 # Lähteet:
 
--Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
--Micro-editor kotisivu: https://micro-editor.github.io/
--Micro-editor asennusohjeita: https://github.com/zyedidia/micro#installation
--Cowsay: https://www.linux.fi/wiki/Cowsay
+- Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
+- Micro-editor kotisivu: https://micro-editor.github.io/
+- Micro-editor asennusohjeita: https://github.com/zyedidia/micro#installation
+- Cowsay: https://www.linux.fi/wiki/Cowsay ja https://itsfoss.com/cowsay/
+- Cmatrix: https://itsfoss.com/using-cmatrix/
+- Lolcat: https://www.tecmint.com/lolcat-color-output-linux-terminal/
