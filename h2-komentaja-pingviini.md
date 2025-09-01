@@ -49,6 +49,20 @@ Tiedosto tallentui minulla siihen hakemistoon missä olin kun käynnistin micro-
 
 Käytin komentoa find -name testimicro.txt selvittääkseni tiedoston sijainnin.
 
+---
+
+![kuva07](/pictures/h2/micro-testi6.png)
+
+Komento micro testimicro.txt avaa tiedoston
+
+---
+
+![kuva08](/pictures/h2/micro-testi7.png)
+
+Tiedosto avattuna uudelleen. Ctrl + q lopettaa ohjelman.
+
+---
+
 # APT
 
 Ohjelmia voi asentaa monta kerralla antamalla apt-get install komennolle asennettavien ohjelmien nimet.  
