@@ -1,9 +1,9 @@
 # Tiivistelmä
 
--Komentorivi on helppo tapa siirtyä hakemistosta toiseen
--Komentorivin avulla voi nopeasti ja helposti luoda uusia ja muokata olemassa olevia tiedostoja
--Komentorivillä voi kätevästi asentaa ja päivittää ohjelmia sekä käyttöjärjestelmän
--Komentorivillä voi käyttää ohjelmia
+- Komentorivi on helppo tapa siirtyä hakemistosta toiseen
+- Komentorivin avulla voi nopeasti ja helposti luoda uusia ja muokata olemassa olevia tiedostoja
+- Komentorivillä voi kätevästi asentaa ja päivittää ohjelmia sekä käyttöjärjestelmän
+- Komentorivillä voi käyttää ohjelmia
 
 # Micro
 
