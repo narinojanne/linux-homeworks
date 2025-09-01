@@ -112,8 +112,8 @@ Komennolla: cmatrix terminaaliin ilmestyy Matrix elokuvan tyylinen näkymä joss
 
 Tässä esimerkiksi haetaan merkkijonoja: save, grep, Grep ja Command. Valitsin -R näyttää nykyisen hakemiston ja sen alihakemistojen  
 tiedostoista rivit, joilla esiintyy jokin mainituista merkkijonoista. Valitsin -n näyttää myös rivinumeron. Valitsimella -i voidaan  
-olla välittämättä kirjainkoosta. Ilman -i valitsinta grep ei palauta mitään ja -i valitsimen kanssa palautetaan tiedostonimi, rivinumero  
-ja tekstirivi.
+olla välittämättä kirjainkoosta. Ilman -i valitsinta grep Command ei palauta mitään ja -i valitsimen kanssa palautetaan tiedostonimi,
+rivinumero ja tekstirivi.
 
 ---
 
