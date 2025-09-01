@@ -110,6 +110,21 @@ Komennolla: cmatrix terminaaliin ilmestyy Matrix elokuvan tyylinen näkymä joss
 
 # Rauta
 
+- Komennolla: lshw -short -sanitize saa listattua käytössä olevan koneen raudan.
+
+![kuva15](/pictures/h2/install-lshw1.png)
+
+Minun piti asentaa lshw, se onnistui komennolla: sudo apt-get install lshw
+
+---
+
+![kuva16](/pictures/h2/lshw1.png)
+
+Minulla näyttäisi olevan virtuaalikoneessani ainakin 4GB ram-muistia, Intelin i5 prosessori, 37GB tallennustilaa,  
+CD-rom asema, hiiri ja näppäimistö.
+
+---
+
 # Lähteet:
 
 - Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
