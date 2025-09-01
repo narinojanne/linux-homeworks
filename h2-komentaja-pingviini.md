@@ -106,7 +106,28 @@ Komennolla: cmatrix terminaaliin ilmestyy Matrix elokuvan tyylinen näkymä joss
 
 # The Friendly M
 
+- Komennolla: grep voi etsiä hakemistoista ja tiedostoista tiettyä merkkijonoa.
+
+![kuva17](/pictures/h2/grep1.png)
+
+Tässä esimerkiksi haetaan merkkijonoja: save, grep, Grep ja Command. Valitsin -R näyttää nykyisen hakemiston ja sen alihakemistojen  
+tiedostoista rivit, joilla esiintyy jokin mainituista merkkijonoista. Valitsin -n näyttää myös rivinumeron. Valitsimella -i voidaan  
+olla välittämättä kirjainkoosta. Ilman -i valitsinta grep ei palauta mitään ja -i valitsimen kanssa palautetaan tiedostonimi, rivinumero  
+ja tekstirivi.
+
+---
+
 # Pipe
+
+- Piipulla "|" voidaan ohjata toisen ohjelman tulos toiselle ohjelmalle syötteenä, jolloin toinen ohjelma käyttää ensimmäiseltä ohjelmalta  
+  saatua vastausta syötteenään tai argumenttina.
+
+![kuva18](/pictures/h2/pipe1.png)
+
+Ensimmäisessä esimerkissä etsitään apt ohjelmia jotka sisältävät sanan "tree" ja saatu tulos annetaan grep ohjelmalle ja samalla grepiä  
+ohjeistetaan näyttämään rivit jotka alkavat sanalla "tree". Näin saadaan vähän lyhyempi lista tuloksista.  
+Toisessa esimerkissä pyydetään järjestelmältä aikaleima ja se syötetään lolcat ohjelmalle -a kahvalla ja tuloksena on lyhyt  
+vaihtuvilla väreillä animoitu aikaleima.
 
 # Rauta
 
@@ -133,3 +154,5 @@ CD-rom asema, hiiri ja näppäimistö.
 - Cowsay: https://www.linux.fi/wiki/Cowsay ja https://itsfoss.com/cowsay/
 - Cmatrix: https://itsfoss.com/using-cmatrix/
 - Lolcat: https://www.tecmint.com/lolcat-color-output-linux-terminal/
+- Grep: https://www.linux.fi/wiki/Grep
+- Pipe:
