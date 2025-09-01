@@ -8,34 +8,27 @@
 # Micro
 
 ![kuva01](/pictures/h2/micro%20asennus.png)
-
-Micro-editorin voi asentaa ajamalla komennon: sudo apt-get install micro.
-Olinkin jo asentanut tämän aikaisemmin.
+-Micro-editorin voi asentaa ajamalla komennon: sudo apt-get install micro.
+-Olinkin jo asentanut tämän aikaisemmin.
 
 ![kuva02](/pictures/h2/micro-start.png)
-
-Micro-editor käynnistyy komennolla micro ja avaa tyhjän tiedoston.
+-Micro-editor käynnistyy komennolla micro ja avaa tyhjän tiedoston.
 
 ![kuva03](/pictures/h2/micro-testi.png)
-
-Micro-editor käytössä.
+-Micro-editor käytössä.
 
 ![kuva04](/pictures/h2/micro-testi2.png)
-
-Ctrl + q avaa ohje valikon.
+-Ctrl + q avaa ohje valikon.
 
 ![kuva05](/pictures/h2/micro-testi3.png)
-
-Ctrl + s tallentaa tiedoston. Alakulmaan annetaan tiedostolle nimi.
+-Ctrl + s tallentaa tiedoston. Alakulmassa annetaan tiedostolle nimi.
 
 ![kuva06](/pictures/h2/micro-testi4.png)
-
-Tiedoston tallennus onnistui.
-Tiedosto tallentui minulla siihen hakemistoon missä olin kun käynnistin micro-editorin.
+-Tiedoston tallennus onnistui.
+-Tiedosto tallentui minulla siihen hakemistoon missä olin kun käynnistin micro-editorin.
 
 ![kuva07](/pictures/h2/micro-testi5.png)
-
-Käytin komentoa find -name testimicro.txt selvittääkseni tiedoston sijainnin.
+-Käytin komentoa find -name testimicro.txt selvittääkseni tiedoston sijainnin.
 
 # APT
 
