@@ -155,4 +155,4 @@ CD-rom asema, hiiri ja näppäimistö.
 - Cmatrix: https://itsfoss.com/using-cmatrix/
 - Lolcat: https://www.tecmint.com/lolcat-color-output-linux-terminal/
 - Grep: https://www.linux.fi/wiki/Grep
-- Pipe:
+- Pipe: https://www.linux.fi/wiki/Putki
