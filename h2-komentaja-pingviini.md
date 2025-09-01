@@ -7,34 +7,44 @@
 
 # Micro
 
-Asensin micro-editorin ajamalla komennon: sudo apt-get install micro
+Micro-editorin voi asentaa ajamalla komennon: sudo apt-get install micro  
+![kuva01](/pictures/h2/micro%20asennus.png)
+Olinkin jo asentanut tämän aikaisemmin.
 
+![kuva02](/pictures/h2/micro-start.png)  
+Micro-editor käynnistyy komennolla micro ja avaa tyhjän tiedoston.
+
+![kuva03](/pictures/h2/micro-testi.png)  
+Micro-editor käytössä.
+
+![kuva04](/pictures/h2/micro-testi2.png)  
+Ctrl + q avaa ohje valikon.
+
+![kuva05](/pictures/h2/micro-testi3.png)  
+Ctrl + s tallentaa tiedoston. Alakulmaan annetaan tiedostolle nimi.
+
+![kuva06](/pictures/h2/micro-testi4.png)  
+Tiedoston tallennus onnistui. Tiedosto tallentui minulla siihen hakemistoon missä olin kun käynnistin micro-editorin.
+
+![kuva07](/pictures/h2/micro-testi5.png)  
+Käytin komentoa find -name testimicro.txt selvittääkseni tiedoston sijainnin.
 
 # APT
 
-Ohjelmia voi asentaa monta kerralla antamalla apt-get install komennolle asennettavien ohjelmien nimet  
-Asensin ohjelmat, käyttämällä komentoa: sudo apt-get install cowsay  
-
+Ohjelmia voi asentaa monta kerralla antamalla apt-get install komennolle asennettavien ohjelmien nimet.  
+Asensin ohjelmat, käyttämällä komentoa: sudo apt-get install cowsay
 
 # FHS
 
-
-
 # The Friendly M
-
-
 
 # Pipe
 
-
-
 # Rauta
 
-
-
 # Lähteet:
+
 -Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
 -Micro-editor kotisivu: https://micro-editor.github.io/
 -Micro-editor asennusohjeita: https://github.com/zyedidia/micro#installation
 -Cowsay: https://www.linux.fi/wiki/Cowsay
-
