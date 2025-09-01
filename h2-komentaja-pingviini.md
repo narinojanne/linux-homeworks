@@ -28,7 +28,7 @@ Micro-editor käytössä.
 
 ![kuva04](/pictures/h2/micro-testi2.png)
 
-Ctrl + q avaa ohje valikon.
+Ctrl + g avaa ohje valikon.
 
 ---
 
@@ -41,7 +41,7 @@ Ctrl + s tallentaa tiedoston. Alakulmassa annetaan tiedostolle nimi.
 ![kuva06](/pictures/h2/micro-testi4.png)
 
 Tiedoston tallennus onnistui.
-Tiedosto tallentui minulla siihen hakemistoon missä olin kun käynnistin micro-editorin.
+Tiedosto tallentui minulla siihen hakemistoon missä olin kun käynnistin micro-editorin. Ctrl + q lopettaa ohjelman.
 
 ---
 
