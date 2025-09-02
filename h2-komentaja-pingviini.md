@@ -104,6 +104,46 @@ Komennolla: cmatrix terminaaliin ilmestyy Matrix elokuvan tyylinen näkymä joss
 
 # FHS
 
+Linuxin hakemistorakenne perustuu FHS-standardiin, joka määrittää joukon hakemistoja ja niiden pääasiallisen käyttötarkoituksen.  
+Hakemistorakenne alkaa juurihakemistosta, merkintä kauttaviiva "/", jonka alle tiedostot ja hakemistot järjestetään puumaiseksi rakenteeksi.  
+Valitettavasti en ehtinyt tehdä tämän tarkempaa kuvausta tästä aiheesta tällä kertaa.
+
+![kuva19](/pictures/h2/root.png)
+
+Kuva minun juurihakemistosta. Täältä löytyy järjestelmän kaikki tiedostot ja hakemistot.
+
+---
+
+![kuva20](/pictures/h2/home.png)
+
+Home hakemisto. Täältä löytyy kaikkien käyttäjien omat hakemistot.
+
+---
+
+![kuva21](/pictures/h2/oma.png)
+
+Tässä minun käyttäjähakemistoni. Tänne voin tallentaa tiedostoja sekä luoda uusia hakemistoja ilman sudo komentoa.
+
+---
+
+![kuva22](/pictures/h2/etc2.png)
+
+ETC hakemisto. Täältä löytyy järjestelmän asetustiedostoja.
+
+---
+
+![kuva23](/pictures/h2/media2.png)
+
+Media hakemisto. Täällä sijaitsee siirrettävien medioiden liitoskohdat.
+
+---
+
+![kuva24](/pictures/h2/var-log2.png)
+
+/var/log hakemisto. Täältä löytyy järjestelmän lokitiedostoja.
+
+---
+
 # The Friendly M
 
 - Komennolla: grep voi etsiä hakemistoista ja tiedostoista tiettyä merkkijonoa.
@@ -128,6 +168,8 @@ Ensimmäisessä esimerkissä etsitään apt ohjelmia jotka sisältävät sanan "
 ohjeistetaan näyttämään rivit jotka alkavat sanalla "tree". Näin saadaan vähän lyhyempi lista tuloksista.  
 Toisessa esimerkissä pyydetään järjestelmältä aikaleima ja se syötetään lolcat ohjelmalle -a kahvalla ja tuloksena on lyhyt  
 vaihtuvilla väreillä animoitu aikaleima.
+
+---
 
 # Rauta
 
@@ -156,3 +198,5 @@ CD-rom asema, hiiri ja näppäimistö.
 - Lolcat: https://www.tecmint.com/lolcat-color-output-linux-terminal/
 - Grep: https://www.linux.fi/wiki/Grep
 - Pipe: https://www.linux.fi/wiki/Putki
+- Hakemistorakenne: https://www.linux.fi/wiki/Hakemistorakenne
+- FHS: https://fi.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
