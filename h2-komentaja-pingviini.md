@@ -183,8 +183,9 @@ Minun piti asentaa lshw, se onnistui komennolla: sudo apt-get install lshw
 
 ![kuva16](/pictures/h2/lshw1.png)
 
-Minulla näyttäisi olevan virtuaalikoneessani ainakin 4GB ram-muistia, Intelin i5 prosessori, 37GB tallennustilaa,  
-CD-rom asema, hiiri ja näppäimistö.
+Minulla näyttäisi olevan virtuaalikoneessani ainakin 4GB ram-muistia, riittävästi virtuaalikoneen tarpeisiin.  
+Intelin i5 prosessori, ei ihan uusinta teknologiaa mutta kelpaa loistavasti tähän tarkoitukseen.  
+37GB tallennustilaa, CD-rom asema, hiiri ja näppäimistö.
 
 ---
 
