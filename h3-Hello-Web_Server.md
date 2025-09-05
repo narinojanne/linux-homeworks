@@ -69,8 +69,27 @@ Lisätään tiedostoon säännöt verkkoliikennettä varten sekä omat lokit vir
 
 ```
 
+Sallitaan sivu palvelimelle
+
+```
+
+sudo a2ensite site1.com
+
+```
+
+Ja uudelleen käynnistetään Apache2 palvelin, koska teimme muutoksia konfiguraatioon
+
+```
+
+sudo systemctl restart apache2
+
+```
+
+Tehdään hakemisto omia sivuja varten omaan käyttäjä hakemistoon, jotta voimme luoda sivut ilman sudon käyttämistä täytyy hakemiston oikeuksia muokata
+
 ---
 
 # Lähteet
 
 - Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
+- Apache2 Web Server: https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-03092025.md
