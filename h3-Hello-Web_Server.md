@@ -118,6 +118,18 @@ mkdir /home/janne/public-sites/hattu.example.com
 
 ```
 
+Lisätään index.html tiedosto uuteen hakemistoon sekä jotain tekstiä näytettäväksi selaimessa
+
+```
+
+nano /home/janne/public-sites/hattu.example.com/index.html
+
+```
+
+![kuva09](/pictures/h3/hattu6.png)
+
+---
+
 Tarkistetaan että hakemiston oikeudet ovat kunnossa ja Apachella pääsy lukemaan hakemiston tiedostoja.
 
 `ls -la /home/janne/public-sites/hattu.example.com` -komennolla nähdään, että index.html-tiedostolla on lukuoikeudet(r) muille käyttäjille.
@@ -148,6 +160,26 @@ voi lukea tarvittavia tiedostoja. Jos suoritusoikeudet muille käyttäjille puut
 `ls -la / |grep home` -komennolla voimme tarkistaa vielä, että kotihakemistolla (/home) on myös suoritusoikeudet(x) muille käyttäjille.
 
 ![kuva08](/pictures/h3/hattu5.png)
+
+---
+
+Nyt kun hakemistojen ja tiedostojen oikeudet ovat kunnossa niin voimme kokeilla palvelimen toimivuutta.
+
+```
+
+curl hattu.example.com
+
+```
+
+Terminaalissa näkyy hakemistossa /home/janne/public-sites/hattu.example.com olevan index.html-tiedoston sisältö.
+
+![kuva10](/pictures/h3/hattu7.png)
+
+---
+
+Ja selaimella kun navigoidaan osoitteeseen `http://hattu.example.com` näkyy tiedoston sisältö selaimessa.
+
+![kuva11](/pictures/h3/hattu8.png)
 
 ---
 
