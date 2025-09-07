@@ -211,3 +211,5 @@ nano /home/janne/public-sites/hattu.example.com/index.html
 - Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
 - Apache2 Web Server: https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-03092025.md
 - Name Based Virtual Hosts on Apache: https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/
+- Short HTML5 page: https://terokarvinen.com/2012/short-html5-page/
+- HTML validator: https://validator.w3.org
