@@ -182,6 +182,30 @@ Ja selaimella kun navigoidaan osoitteeseen `http://hattu.example.com` näkyy tie
 
 ---
 
+# Validi HTML5 sivu
+
+Seuraavaksi olisi tarkoitus tehdä oikea validi html5 sivu.
+
+Avataan tekemämme index.html-tiedosto ja muokataan siitä oikea html5 sivu.
+
+```
+
+nano /home/janne/public-sites/hattu.example.com/index.html
+
+```
+
+![kuva12](/pictures/h3/hattu9.png)
+
+---
+
+![kuva13](/pictures/h3/hattu10.png)
+
+---
+
+![kuva14](/pictures/h3/hattu11.png)
+
+---
+
 # Lähteet
 
 - Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
