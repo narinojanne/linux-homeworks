@@ -93,7 +93,7 @@ sudoedit /etc/hosts
 
 ```
 
-Ja lisätään rivit
+Lisätään seuraavat rivit
 
 ```
 
@@ -130,7 +130,7 @@ nano /home/janne/public-sites/hattu.example.com/index.html
 
 ---
 
-Tarkistetaan että hakemiston oikeudet ovat kunnossa ja Apachella pääsy lukemaan hakemiston tiedostoja.
+Tarkistetaan että hakemiston oikeudet ovat kunnossa ja Apachella on pääsy lukemaan hakemiston tiedostoja.
 
 `ls -la /home/janne/public-sites/hattu.example.com` -komennolla nähdään, että index.html-tiedostolla on lukuoikeudet(r) muille käyttäjille.
 
@@ -150,8 +150,7 @@ Tarkistetaan että hakemiston oikeudet ovat kunnossa ja Apachella pääsy lukema
 
 ---
 
-`ls -la /home/ |grep janne` -komennolla näemme, että käyttäjän janne omalla hakemistolla on suoritusoikeudet(x) muille käyttäjille niinkuin kuuluukin olla, jotta apache  
-voi lukea tarvittavia tiedostoja. Jos suoritusoikeudet muille käyttäjille puuttuu, niin ne voi lisätä komennolla `sudo chmod o+x /home` .
+`ls -la /home/ |grep janne` -komennolla näemme, että käyttäjän janne omalla hakemistolla on suoritusoikeudet(x) muille käyttäjille niinkuin kuuluukin olla, jotta apache voi lukea tarvittavia tiedostoja. Jos suoritusoikeudet muille käyttäjille puuttuu, niin ne voi lisätä komennolla `sudo chmod o+x /home` .
 
 ![kuva07](/pictures/h3/hattu4.png)
 
@@ -187,3 +186,4 @@ Ja selaimella kun navigoidaan osoitteeseen `http://hattu.example.com` näkyy tie
 
 - Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
 - Apache2 Web Server: https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-03092025.md
+- Name Based Virtual Hosts on Apache: https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/
