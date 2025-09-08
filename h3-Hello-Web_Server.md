@@ -48,10 +48,11 @@ Ennen UFW:n sallimista kannattaa avata ssh komennolla `sudo ufw allow ssh` tai `
 
 UFW sallitaan komennolla `sudo ufw enable`.
 
-Sallitaan http(80) portti
+Sallitaan http(80) ja https(443) portit
 
 ```
 sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
 ```
 
 Vahvistetaan, että säännöt ovat aktiivisia komennolla `sudo ufw status verbose`.
@@ -62,6 +63,7 @@ Pitäisi näkyä seuraavat säännöt
 
 To          Action      From
 22/tcp      ALLOW       Anywhere
+443/tcp     ALLOW       Anywhere
 80/tcp      ALLOW       Anywhere
 
 ```
