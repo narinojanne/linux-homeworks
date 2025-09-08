@@ -242,6 +242,47 @@ nano /home/janne/public-sites/hattu.example.com/index.html
 
 ---
 
+# Curl ja curl -I
+
+Esimerkki `curl` ja `curl -I` komennoista
+
+![kuva18](/pictures/h3/curl1.png)
+
+`curl -I` näyttää http-pyynnön otsaketietoja.  
+Esimerkiksi ensimmäisellä rivillä pyynnön vastauskoodi 200 tarkoittaa ok eli pyydetty resurssi (localhost) löytyi.  
+Toisella rivillä on pyynnön aikaleima eli milloin pyyntö on lähetetty serverille.  
+Sitten on tieto palvelimesta (Apache) ja sen käyttöjärjestelmästä (Debia).  
+Sen jälkeen on tieto milloin pyydettyä resurssia (localhost) on viimeksi muokattu.  
+Viimeisellä rivillä kerrotaan resurssin sisällön tyyppi (Content-type), tässä tapauksessa se on tekstiä ja html koodia.
+
+---
+
+# Kaksi weppisaittia samalla koneella
+
+Vapaaehtoisena tehtävänä oli saada tietokone vastaamaan usealle eri sivulle eri nimistä.  
+Luennolla jo teimme harjoituksena site1.com sivun ja tämän lisäksi tein vielä myothersite.com nimisen sivun virtuaalikoneelle yllä olevaa ohjetta noudattamalla.  
+Tosin näistä sivuista en tehnyt html5 sivuja, vaan lisäsin vain testin vuoksi jotain tekstiä näytettäväksi.
+
+`/etc/hosts` tiedostossa löytyy tarvittavat nimiohjaukset.
+
+![kuva19](/pictures/h3/hosts1.png)
+
+---
+
+`/etc/apache2/sites-available/` hakemistossa on kaikkien sivujen konfiguraatiotiedostot
+
+![kuva20](/pictures/h3/hosts2.png)
+
+---
+
+Ja sekä terminaalin `curl` että selain näyttävät site1.com ja myothersite.com sivujen sisällön.
+
+![kuva21](/pictures/h3/hosts3.png)
+
+![kuva22](/pictures/h3/hosts4.png)
+
+---
+
 # Lähteet
 
 - Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
