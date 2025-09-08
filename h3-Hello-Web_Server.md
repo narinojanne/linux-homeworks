@@ -70,8 +70,8 @@ Lisätään tiedostoon säännöt verkkoliikennettä varten sekä omat lokit vir
    Require all granted
  </Directory>
 
- ErrorLog ${APACHE_LOG_DIR}/error-hattu.example.log
- CustomSite ${APACHE_LOG_DIR}/access-hattu.example.log combined
+ Errorlog ${APACHE_LOG_DIR}/error-hattu.example.log
+ Customlog ${APACHE_LOG_DIR}/access-hattu.example.log combined
 
 </VirtualHost>
 
@@ -176,9 +176,45 @@ Terminaalissa näkyy hakemistossa /home/janne/public-sites/hattu.example.com ole
 
 ---
 
-Ja selaimella kun navigoidaan osoitteeseen `http://hattu.example.com` näkyy tiedoston sisältö selaimessa.
+Ja kun selaimella navigoidaan osoitteeseen `http://hattu.example.com` tiedoston sisältö näkyy selaimessa.
 
 ![kuva11](/pictures/h3/hattu8.png)
+
+---
+
+Tämä sivu piti saada myös näkymään `http://localhost` osoitteessa, niin ratkaisin asian niin, että ensin uudelleen nimesin `/var/www/html/index.html` tiedoston, koska se on tiedosto jonka apache näyttää selaimessa oletuksena osoitteelle `localhost` ja se sijaitsee hakemistossa `/var/www/html`
+
+```
+
+sudo mv /var/www/html/index.html /var/www/html/copyindex.html
+
+```
+
+Tämän jälkeen linkkasin `/home/janne/public-sites/hattu.example.com/index.html` tiedoston `/var/www/html`-hakemistoon tekemällä siitä symbolic linkin
+
+```
+
+sudo ln -s /home/janne/public-sites/hattu.example.com/index.html /var/www/html/index.com
+
+```
+
+Ja nyt terminaalin komento `curl localhost` sekä selaimessa osoite `http://localhost` näyttää tekemäni hattu.example.com/index.html tiedoston sisällön
+
+![kuva15](/pictures/h3/hattu15.png)
+
+---
+
+Nyt kun muokkaan alkuperäistä tiedostoa, niin myös linkattu tiedosto muuttuu ja oletussivu `localhost` päivittyy samalla
+
+```
+
+nano /home/janne/public-sites/hattu.example.com/index.html
+
+```
+
+![kuva16](/pictures/h3/hattu16.png)
+
+![kuva17](/pictures/h3/hattu17.png)
 
 ---
 
