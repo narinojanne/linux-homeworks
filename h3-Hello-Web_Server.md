@@ -1,5 +1,9 @@
 # Tiivistelmä
 
+- Nimipohjainen virtuaalipalvelin on yleensä yksinkertaisempi kuin IP-osoite pohjainen
+- Nimipohjainen virtuaalipalvelin helpottaa IP-osoitteiden kysyntää
+- ServerAliaksen avulla yhden sivun voi laittaa vastaamaan useampaan eri nimeen
+
 ---
 
 # Asenna Apache-weppipalvelin
@@ -23,6 +27,42 @@ Sallitaan Apache2:n käynnistyä automaattisesti koneen käynnistyksen yhteydess
 ```
 
 sudo systemctl enable --now apache2
+
+```
+
+---
+
+## UFW asennus
+
+Apache2 palvelin hyväksyy saapuvat http/https-pyynnöt julkisista IP-osoitteista, joten tarvitaan palomuuria rajoittamaan ja hallitsemaan liikennettä.
+
+Jos UFW ei ole asennettuna vielä niin sen voi asentaa komennolla
+
+```
+
+sudo apt-get install ufw
+
+```
+
+Ennen UFW:n sallimista kannattaa avata ssh komennolla `sudo ufw allow ssh` tai `sudo ufw allow 22/tcp` varsinkin jos käytät etäyhteydellä palvelinkonetta.
+
+UFW sallitaan komennolla `sudo ufw enable`.
+
+Sallitaan http(80) portti
+
+```
+sudo ufw allow 80/tcp
+```
+
+Vahvistetaan, että säännöt ovat aktiivisia komennolla `sudo ufw status verbose`.
+
+Pitäisi näkyä seuraavat säännöt
+
+```
+
+To          Action      From
+22/tcp      ALLOW       Anywhere
+80/tcp      ALLOW       Anywhere
 
 ```
 
@@ -288,5 +328,6 @@ Ja sekä terminaalin `curl` että selain näyttävät site1.com ja myothersite.c
 - Tehtävänanto: https://terokarvinen.com/linux-palvelimet/
 - Apache2 Web Server: https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-03092025.md
 - Name Based Virtual Hosts on Apache: https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/
+- Name-based Virtual Host Support: https://httpd.apache.org/docs/2.4/vhosts/name-based.html
 - Short HTML5 page: https://terokarvinen.com/2012/short-html5-page/
 - HTML validator: https://validator.w3.org
