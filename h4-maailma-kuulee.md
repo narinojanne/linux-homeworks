@@ -87,9 +87,18 @@ Minulla oli jo SSH-avaimet olemassa, mutta päällekirjoitin uudet.
 ---
 
 SSH-avaimet löytyvät .ssh -hakemistosta.  
-`cd .ssh/`  
-`ls`  
-.pub päätteinen tiedosto on julkinen avain, joka on tarkoitus syöttää `Add an SSH key` ikkunan `SSH key` laatikkoon.  
+`cd .ssh/`
+
+.pub päätteinen tiedosto on julkinen avain, joka on tarkoitus syöttää `Add an SSH key` ikkunan `SSH key` laatikkoon.
+
+Avaimen sisällön näkee esimerkiksi komennolla
+
+```
+cat ssh-avain.pub
+```
+
+Korvaa `ssh-avain` oman tiedostosi nimellä.
+
 Lopuksi painetaan `Save the SSH key` painiketta.
 
 ![kuva13](/pictures/h4/vps10.png)
