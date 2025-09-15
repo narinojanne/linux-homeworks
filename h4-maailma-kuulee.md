@@ -184,6 +184,14 @@ sudo adduser janne
 
 ---
 
+Lisäsin käyttäjän vielä sudo ryhmään komennolla
+
+```
+sudo adduser janne sudo
+```
+
+---
+
 Kokeilin toimiiko yhteys uudella käyttäjällä.
 
 ```
