@@ -1,6 +1,12 @@
 # Tiivistelmä
 
-- Virtuaalipalvelin on usein parempi vaihtoehto kuin oma fyysinen palvelin
+- Rekisteröidy käyttäjäksi virtuaalipalvelimen palveluntarjoajan sivuilla
+- Vuokraa itsellesi sopiva virtuaalipalvelin
+- Suojaa palvelin tulimuurilla
+- Päivitä palvelimen ohjelmat uusimpiin
+- Lukitse root-tunnus
+- Asenna weppipalvelin, jotta voit julkaista omia nettisivuja
+- Käytä aina hyviä ja vahvoja salasanoja, aina
 
 ---
 
@@ -155,9 +161,7 @@ Tulimuuri päälle komennolla
 sudo ufw enable
 ```
 
-```
-Firewall is active and enabled on system startup
-```
+Pitäisi tulla näkyviin teksti `Firewall is active and enabled on system startup`, joka kertoo, että ufw on käynnissä ja käynnistyy myös järjestelmän käynnistyessä.
 
 ---
 
@@ -246,10 +250,67 @@ ssh root@185.26.51.240
 
 ![kuva25](/pictures/h4/vps23.png)
 
-Root kirjautuminen ei onnistu enää.
+Nyt root kirjautuminen ei onnistu enää.
+
+---
+
+## Weppipalvelin
+
+Seuraavaksi piti asentaa virtuaalipalvelimelle weppipalvelin, korvata testisivu ja saada se näkymään julkisesti.
+
+Asensin weppipalvelimeksi Apache2:n komennolla
+
+```
+sudo apt-get install apache2
+```
+
+Korvasin apachen oletuksena olevan testisivun sisällön tervehdykseen `Greetings from Janne` käyttämällä komentoa
+
+```
+
+echo Greetings from Janne | sudo tee /var/www/html/index.html
+```
+
+![kuva26](/pictures/h4/vps24_apache.png)
+
+---
+
+Testasin virtuaalipalvelimen `localhost` sisällön
+
+```
+curl localhost
+```
+
+![kuva27](/pictures/h4/vps25_apache2.png)
+
+Tervehdys näkyy joten testisivun sisältö on korvattu.
+
+---
+
+Sitten navigoin selaimella virtuaalipalvelimeni ip-osoitteeseen `185.26.51.240`, mutta selain jäi vain lataamaan sivua eli weppipalvelimeni ei vastannut.
+
+![kuva28](/pictures/h4/vps26_apache3.png)
+
+---
+
+Avasin ufw:stä portin http:tä varten komennolla
+
+```
+sudo ufw allow 80/tcp
+```
+
+![kuva29](/pictures/h4/vps27_apache4.png)
+
+---
+
+Sitten vain uudelleen kokeilemaan selaimella osoitetta `185.26.51.240` ja nyt tervehdys näkyy myös selaimella. Myös palvelimen `localhost` toimii edelleen.
+
+![kuva30](/pictures/h4/vps28_apache5.png)
 
 ---
 
 # Lähteet
 
-- Tehtävänanto:
+- Tehtävänanto: https://terokarvinen.com/linux-palvelimet/#h4-maailma-kuulee. Luettu: 15.9.2025.
+- First Steps on a New Virtual Private Server: https://terokarvinen.com/2017/first-steps-on-a-new-virtual-private-server-an-example-on-digitalocean/. Luettu: 15.9.2025.
+- Susanna Lehto - Teoriasta käytäntöön pilvipalvelimen avulla: https://susannalehto.fi/2022/teoriasta-kaytantoon-pilvipalvelimen-avulla-h4/. Luettu: 15.9.2025.
