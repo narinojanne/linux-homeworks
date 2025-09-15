@@ -104,3 +104,152 @@ Palvelin löytyy `Servers` valikon alta.
 ![kuva15](/pictures/h4/vps13.png)
 
 ---
+
+# Alkutoimet
+
+Alkutoimina palvelimelle piti laittaa tulimuuri päälle, sulkea root-tunnus ja päivittää ohjelmat.
+
+## Tulimuuri
+
+Ensin yhdistin SSH:lla palvelimelle käyttämällä komentoa `ssh root@ip-osoite`. Palvelimen ip-osoite löytyy palvelimen tiedoista `Servers` valikosta.
+
+```
+
+ssh root@185.26.51.240
+
+```
+
+![kuva16](/pictures/h4/vps14.png)
+
+---
+
+Kun olin saanut yhteyden luotua palvelimelle niin päivitin palvelimen ohjelmat.
+
+```
+sudo apt-get update
+```
+
+```
+sudo apt-get dist-upgrade
+```
+
+Ja asensin ufw:n palvelimelle
+
+```
+sudo apt-get install ufw
+```
+
+Ennen kuin laitoin ufw:n päälle niin avasin ssh yhteyden tulimuuriin, koska olen ssh yhteydellä kiinni palvelimessa niin ilman tätä reikää sulkisin oman yhteyteni palvelimeen.
+
+```
+sudo ufw allow 22/tcp
+```
+
+![kuva17](/pictures/h4/vps15.png)
+
+---
+
+Tulimuuri päälle komennolla
+
+```
+sudo ufw enable
+```
+
+```
+Firewall is active and enabled on system startup
+```
+
+---
+
+## Root-tunnus kiinni
+
+Aloitin root-tunnuksen sulkemisen luomalla uuden sudo käyttäjän palvelimelle ja lisäämällä salasanan käyttäjälle.
+
+```
+sudo adduser janne
+```
+
+![kuva18](/pictures/h4/vps16.png)
+
+![kuva19](/pictures/h4/vps17.png)
+
+---
+
+Kokeilin toimiiko yhteys uudella käyttäjällä.
+
+```
+ssh janne@185.26.51.240
+```
+
+![kuva20](/pictures/h4/vps18.png)
+
+Yhteys ei toiminut vielä, joten kopioin root:n ssh-asetukset uudelle käyttäjälle ja vaihdoin asetus-hakemiston omistajan käyttäjäksi.
+
+```
+sudo cp -rvn /root/.ssh/ /home/janne/
+```
+
+```
+sudo chown -R janne:janne /home/janne/
+```
+
+![kuva21](/pictures/h4/vps19.png)
+
+---
+
+Uusi yritys ssh-yhteydelle käyttäjänä.
+
+```
+ssh janne@185.26.51.240
+```
+
+![kuva22](/pictures/h4/vps20.png)
+
+Nyt yhteys toimii käyttäjänä.
+
+---
+
+Seuraavaksi lukitsin root-käyttäjän ja estin root-käyttäjän kirjautumisen palvelimelle.  
+Ensin tunnus lukkoon.
+
+```
+sudo usermod --lock root
+```
+
+Estetään root kirjautuminen muokkaamalla asetustiedostoa.
+
+```
+sudoedit /etc/ssh/sshd_config
+```
+
+Etsitään rivi `PermitRootLogin yes` ja vaihdetaan `yes` tilalle `no`.
+
+![kuva23](/pictures/h4/vps21.png)
+
+![kuva24](/pictures/h4/vps22.png)
+
+Tallennus ja poistuminen editorista `ctrl + x`, `Y` ja `enter`.
+
+Uudelleen käynnistetään ssh, jotta uudet asetukset tulevat voimaan.
+
+```
+sudo service ssh restart
+```
+
+---
+
+Kirjautuminen root-käyttäjänä ei nyt pitäisi onnistua enää, joten kokeillaan sitä.
+
+```
+ssh root@185.26.51.240
+```
+
+![kuva25](/pictures/h4/vps23.png)
+
+Root kirjautuminen ei onnistu enää.
+
+---
+
+# Lähteet
+
+- Tehtävänanto:
