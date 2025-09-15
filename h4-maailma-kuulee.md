@@ -77,9 +77,7 @@ Avatuvaan ikkunaan liitetään omalla koneella luotu SSH-avainparin julkinen ava
 SSH-avainparin luominen onnistuu omalla koneella käyttämällä komentoa
 
 ```
-
 ssh-keygen
-
 ```
 
 Minulla oli jo SSH-avaimet olemassa, mutta päällekirjoitin uudet.
@@ -120,9 +118,7 @@ Alkutoimina palvelimelle piti laittaa tulimuuri päälle, sulkea root-tunnus ja 
 Ensin yhdistin SSH:lla palvelimelle käyttämällä komentoa `ssh root@ip-osoite`. Palvelimen ip-osoite löytyy palvelimen tiedoista `Servers` valikosta.
 
 ```
-
 ssh root@185.26.51.240
-
 ```
 
 ![kuva16](/pictures/h4/vps14.png)
@@ -267,7 +263,6 @@ sudo apt-get install apache2
 Korvasin apachen oletuksena olevan testisivun sisällön tervehdykseen `Greetings from Janne` käyttämällä komentoa
 
 ```
-
 echo Greetings from Janne | sudo tee /var/www/html/index.html
 ```
 
