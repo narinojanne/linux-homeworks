@@ -92,7 +92,7 @@ Minä päätin lisätä uuden tietueen joten valitsin `Uusi tietue` painikkeen.
 
 ---
 
-Tässä valitsin tietueen tyypiksi A, nimenä oli valmiiksi 'Domain name' joka ohjaa verkkotunnuksen `jannenarinen.com`, TTL-arvoksi jätin 600, joka oli oletuksena ja lisäsin kohde IP-osoitteeseen virtuaalipalvelimeni IP-osoitteen. Ja sitten vain painetaan `Lisää` painiketta. Vahvistus kertoo, että DNS-tietueen tallennus onnistui ja se myös näkyy DNS-tietuuiden listassa.
+Tässä valitsin tietueen tyypiksi A, nimenä oli valmiiksi 'Domain name' joka ohjaa verkkotunnusta `jannenarinen.com`, TTL-arvoksi jätin 600, joka oli oletuksena ja lisäsin kohde IP-osoitteeseen virtuaalipalvelimeni IP-osoitteen. Ja sitten vain painetaan `Lisää` painiketta. Vahvistus kertoo, että DNS-tietueen tallennus onnistui ja se myös näkyy DNS-tietuiden listassa.
 
 ![kuva18](/pictures/h5/zonerdns17x.png)
 
@@ -100,7 +100,7 @@ Tässä valitsin tietueen tyypiksi A, nimenä oli valmiiksi 'Domain name' joka o
 
 ---
 
-Lisäsin myös DNS-tietueen www.jannenarinen.com ohjausta varten, mutta tällä kertaa 'Nimi' kohtaan tuli 'www' joka ohjaa verkkotunnuksen `www.jannenarinen.com` liikenteen.
+Lisäsin myös DNS-tietueen 'www' ohjausta varten, mutta tällä kertaa 'Nimi' kohtaan tuli 'www' joka ohjaa verkkotunnuksen `www.jannenarinen.com` liikenteen.
 
 ![kuva20](/pictures/h5/zonerdns19x.png)
 
@@ -116,7 +116,7 @@ Poistin DNS-tietueet, jotka eivät ohjaudu omalle virtuaalipalvelimelleni valits
 
 ---
 
-Tietueiden poistamista ei olisi tarvinnut tehdä jos olisin vain muokannut tietueita.
+Tietueiden poistamista ei olisi tarvinnut tehdä jos olisin vain alussa muokannut olemassa olevia tietueita.
 
 ---
 
@@ -175,7 +175,7 @@ micro /home/janne/public-sites/jannenarinen.com/index.html
 ---
 
 Tässä vaiheessa on hyvä vielä tarkistaa, että apachella on pääsy hakemistoon `public-sites` ja sen tiedostoihin.  
-Tässä [JohannaHeinonen](https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-03092025.md) ohje, jonka avulla saa hienosti tarkistettua oikeudet.
+Tässä [JohannaHeinosen](https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-03092025.md) ohje, jonka avulla saa hienosti tarkistettua oikeudet.
 
 ![kuva26](/pictures/h5/johannaheinonen-apache-permissions.png)
 
