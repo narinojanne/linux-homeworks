@@ -130,13 +130,14 @@ Nyt verkkotunnusten `jannenarinen.com` ja `www.jannenarinen.com` pitäisi ohjaut
 
 ## Apachen konfiguroiminen virtuaalipalvelimella
 
-Ensin otin SSH-yhteyden palvelimelle ja tein .conf tiedoston `jannenarinen.com` verkkotunnukselle.
+Ensin otin SSH-yhteyden palvelimelle.  
+Yhteyden jälkeen tein .conf tiedoston `jannenarinen.com` verkkotunnukselle, jonka perusteella apache ohjaa palvelimen verkkolikennettä.
 
 ```
 sudoedit /etc/apache2/sites-available/jannenarinen.com.conf
 ```
 
-Lisäsin tiedostoon
+Lisäsin tiedostoon seuraavat tiedot.
 
 ```
 
@@ -170,5 +171,42 @@ micro /home/janne/public-sites/jannenarinen.com/index.html
 ```
 
 ![kuva25](/pictures/h5/apache1.png)
+
+---
+
+Tässä vaiheessa on hyvä vielä tarkistaa, että apachella on pääsy hakemistoon `public-sites` ja sen tiedostoihin.  
+Tässä [JohannaHeinonen](https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-03092025.md) ohje, jonka avulla saa hienosti tarkistettua oikeudet.
+
+![kuva26](/pictures/h5/johannaheinonen-apache-permissions.png)
+
+---
+
+Oman kansioni oikeudet näyttivät olevan kunnossa.
+
+![kuva27](/pictures/h5/apache2.png)
+
+---
+
+Muokataan vielä `/etc/hosts` tiedostoon verkkotunnusten ohjaus.
+
+```
+sudoedit /etc/hosts
+```
+
+![kuva28](/pictures/h5/apache3.png)
+
+---
+
+Sitten vielä sallitaan sivusto `sudo a2ensite jannenarinen.com.conf`.
+
+Ja uudelleen käynnistetään Apache2 `sudo systemctl restart apache2`.
+
+Nyt `curl jannenarinen.com` ja selaimen pitäisi näyttää tekemäni `/home/janne/public-sites/jannenarinen.com/index.html` tiedosto.
+
+---
+
+![kuva29](/pictures/h5/apache4.png)
+
+Sehän toimii!
 
 ---
