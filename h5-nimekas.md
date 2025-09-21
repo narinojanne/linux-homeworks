@@ -84,3 +84,91 @@ Valitaan `DNS` ja päästään DNS-hallinta sivulle, jossa voidaan lisätä uusi
 ![kuva16](/pictures/h5/zonerdns15x.png)
 
 ---
+
+Olemassa olevaa tietutetta voi muokata valitsemalla tietueen lopussa olevista kolmesta pisteestä `Muokkaa` vaihtoehdon.  
+Minä päätin lisätä uuden tietueen joten valitsin `Uusi tietue` painikkeen.
+
+![kuva17](/pictures/h5/zonerdns16x.png)
+
+---
+
+Tässä valitsin tietueen tyypiksi A, nimenä oli valmiiksi 'Domain name' joka ohjaa verkkotunnuksen `jannenarinen.com`, TTL-arvoksi jätin 600, joka oli oletuksena ja lisäsin kohde IP-osoitteeseen virtuaalipalvelimeni IP-osoitteen. Ja sitten vain painetaan `Lisää` painiketta. Vahvistus kertoo, että DNS-tietueen tallennus onnistui ja se myös näkyy DNS-tietuuiden listassa.
+
+![kuva18](/pictures/h5/zonerdns17x.png)
+
+![kuva19](/pictures/h5/zonerdns18x.png)
+
+---
+
+Lisäsin myös DNS-tietueen www.jannenarinen.com ohjausta varten, mutta tällä kertaa 'Nimi' kohtaan tuli 'www' joka ohjaa verkkotunnuksen `www.jannenarinen.com` liikenteen.
+
+![kuva20](/pictures/h5/zonerdns19x.png)
+
+![kuva21](/pictures/h5/zonerdns20x.png)
+
+---
+
+Poistin DNS-tietueet, jotka eivät ohjaudu omalle virtuaalipalvelimelleni valitsemalla tietueen lopusta kolme pistettä ja vaihtoehdon `Poista` ja vahvistamalla tietueen poistamisen.
+
+![kuva22](/pictures/h5/zonerdns21x.png)
+
+![kuva23](/pictures/h5/zonerdns22.png)
+
+---
+
+Tietueiden poistamista ei olisi tarvinnut tehdä jos olisin vain muokannut tietueita.
+
+---
+
+Lopuksi DNS-tietueissa on jäljellä vain ne mitkä lisäsin
+
+![kuva24](/pictures/h5/zonerdns23x.png)
+
+---
+
+Nyt verkkotunnusten `jannenarinen.com` ja `www.jannenarinen.com` pitäisi ohjautua omalle virtuaalipalvelimelleni, mutta vasta kun palvelimellani on tehty konfiguraatioita.
+
+## Apachen konfiguroiminen virtuaalipalvelimella
+
+Ensin otin SSH-yhteyden palvelimelle ja tein .conf tiedoston `jannenarinen.com` verkkotunnukselle.
+
+```
+sudoedit /etc/apache2/sites-available/jannenarinen.com.conf
+```
+
+Lisäsin tiedostoon
+
+```
+
+<VirtualHost *:80>
+
+    ServerName jannenarinen.com
+    ServerAlias www.jannenarinen.com
+    DocumentRoot /home/janne/public-sites/jannenarinen.com/
+
+    <Directory /home/janne/public-sites/jannenarinen.com/>
+        Require all granted
+    </Directory>
+
+    Errorlog ${APACHE_LOG_DIR}/error-jannenarinen.log
+    Customlog ${APACHE_LOG_DIR}/access-jannenarinen.log combined
+
+</VirtualHost>
+
+```
+
+Loin hakemiston jannenarinen.com sivustoa varten.
+
+```
+mkdir /home/janne/public-sites/jannenarinen.com/
+```
+
+Lisäsin hakemistoon `index.html` tiedoston, josta tulee sivuston etusivu.
+
+```
+micro /home/janne/public-sites/jannenarinen.com/index.html
+```
+
+![kuva25](/pictures/h5/apache1.png)
+
+---
