@@ -232,7 +232,8 @@ Taas valitaan `Uusi tietue`, täytetään 'Tyyppi' A, nimeksi haluttu alidomain,
 
 ---
 
-Tein saman myös alidomainille 'oikea'. Nyt alidomainit näkyvät DNS-tietueet listassa ja osoittavat samaan virtuaalipalvelimen IP-osoitteeseen.  
+Tein saman myös alidomainille 'oikea'.  
+Nyt alidomainit näkyvät DNS-tietueet listassa ja osoittavat samaan virtuaalipalvelimen IP-osoitteeseen.  
 Eli nyt osoitteet `vasen.jannenarinen.com` ja `oikea.jannenarinen.com` ohjautuvat minun aiemmin tekemälleni virtuaalipalvelimelle, ainakin teoriassa.
 
 ![kuva38](/pictures/h5/zonerdns26x.png)
@@ -251,6 +252,7 @@ sudoedit /etc/apache2/sites-available/oikea.jannenarinen.com.conf
 ```
 
 ![kuva39](/pictures/h5/apache5.png)
+
 ![kuva40](/pictures/h5/apache6.png)
 
 ---
