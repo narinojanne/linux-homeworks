@@ -1,4 +1,4 @@
-# Verkkotunnukesn rekisteröiminen ja ohjaaminen
+# Verkkotunnuksen rekisteröiminen ja ohjaaminen
 
 Tehtävänä oli tällä kertaa laittaa julkinen nimi osoittamaan omaan koneeseen, jonka tulkitsen tässä tarkoittavan aiemmin luotua virtuaalipalvelinta.  
 Luennolla käytettiin esimerkkinä [namecheap](https://www.namecheap.com/) nimistä palvelua ja tuo näytti kyllä ihan pätevältä ja simppeliltä palvelulta käyttää.  
@@ -120,7 +120,7 @@ Tietueiden poistamista ei olisi tarvinnut tehdä jos olisin vain alussa muokannu
 
 ---
 
-Lopuksi DNS-tietueissa on jäljellä vain ne mitkä lisäsin
+Lopuksi DNS-tietueissa on jäljellä vain ne mitkä lisäsin.
 
 ![kuva24](/pictures/h5/zonerdns23x.png)
 
@@ -208,5 +208,112 @@ Nyt `curl jannenarinen.com` ja selaimen pitäisi näyttää tekemäni `/home/jan
 ![kuva29](/pictures/h5/apache4.png)
 
 Sehän toimii!
+
+---
+
+## Alidomain
+
+Tehtävässä piti myös tehdä kaksi uutta alidomainia, jotka osoittavat omaan koneeseen.  
+Aloitin taas kirjautumalla Zoner palvelun omille sivuille ja oman verkkotunnuksen DNS-hallintaan.
+
+![kuva30](/pictures/h5/zonerdns9.png)
+![kuva31](/pictures/h5/zonerdns10x.png)
+![kuva32](/pictures/h5/zonerdns11x.png)
+![kuva33](/pictures/h5/zonerdns12x.png)
+![kuva34](/pictures/h5/zonerdns13.png)
+![kuva35](/pictures/h5/zonerdns14x.png)
+
+---
+
+Taas valitaan `Uusi tietue`, täytetään 'Tyyppi' A, nimeksi haluttu alidomain, tässä esimerkissä nyt 'vasen', TTL 600, oman virtuaalipalvelimen IP-osoite 'Kohde IP' kohtaan ja 'Lisää'.
+
+![kuva36](/pictures/h5/zonerdns24x.png)
+![kuva37](/pictures/h5/zonerdns25x.png)
+
+---
+
+Tein saman myös alidomainille 'oikea'. Nyt alidomainit näkyvät DNS-tietueet listassa ja osoittavat samaan virtuaalipalvelimen IP-osoitteeseen.  
+Eli nyt osoitteet `vasen.jannenarinen.com` ja `oikea.jannenarinen.com` ohjautuvat minun aiemmin tekemälleni virtuaalipalvelimelle, ainakin teoriassa.
+
+![kuva38](/pictures/h5/zonerdns26x.png)
+
+---
+
+## Lisää Apachen konfiguroimista
+
+Sitten tehdään uudestaan samat konffaukset kuin aikaisemmin apachea varten, mutta käytetään verkkotunnuksia `vasen.jannenarinen.com` ja `oikea.jannenarinen.com`.  
+Aloitetaan tekemällä .conf tiedostot.
+
+```
+sudoedit /etc/apache2/sites-available/vasen.jannenarinen.com.conf
+
+sudoedit /etc/apache2/sites-available/oikea.jannenarinen.com.conf
+```
+
+![kuva39](/pictures/h5/apache5.png)
+![kuva40](/pictures/h5/apache6.png)
+
+---
+
+Luodaan omat hakemistot alisivustoille.
+
+```
+mkdir /home/janne/public-sites/vasen.jannenarinen.com
+
+mkdir /home/janne/public-sites/oikea.jannenarinen.com
+```
+
+Nyt minun `public-sites` hakemistossa on myös hakemistot `vasen.jannenarinen.com` ja `oikea.jannenarinen.com`.
+
+![kuva41](/pictures/h5/apache7.png)
+
+---
+
+Seuraavaksi tehdään sivustoille etusivut, joiden sisältö pitäisi saada näkymään selaimessa kun navigoidaan osoitteeseen `vasen.jannenarinen.com` tai `oikea.jannenarinen.com`.
+
+```
+micro /home/janne/public-sites/vasen.jannenarinen.com/index.html
+
+micro /home/janne/public-sites/oikea.jannenarinen.com/index.html
+```
+
+![kuva42](/pictures/h5/apache8.png)
+
+![kuva43](/pictures/h5/apache9.png)
+
+---
+
+Sitten pitää muokata /etc/hosts tiedostoa.
+
+```
+sudoedit /etc/hosts
+```
+
+![kuva44](/pictures/h5/apache10x.png)
+
+---
+
+Sallitaan uudet sivustot.
+
+```
+sudo a2ensite vasen.jannenarinen.com.conf
+
+sudo a2ensite oikea.jannenarinen.com.conf
+```
+
+Käynnistetään uudelleen Apache2-palvelin, koska muokkasimme Apachen asetuksia ja saamme uudet asetukset käyttöön.
+
+`sudo systemctl restart apache2`
+
+Ja nyt uudet alisivut pitäisi toimia `curl vasen.jannenarinen.com` ja `curl oikea.jannenarinen.com` sekä selaimella `vasen.jannenarinen.com` tai `oikea.jannenarinen.com`.
+
+---
+
+Kokeillaan.
+
+![kuva45](/pictures/h5/apache10.png)
+![kuva46](/pictures/h5/apache11.png)
+
+Toimii!
 
 ---
