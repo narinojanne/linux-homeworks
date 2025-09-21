@@ -217,10 +217,15 @@ Tehtävässä piti myös tehdä kaksi uutta alidomainia, jotka osoittavat omaan 
 Aloitin taas kirjautumalla Zoner palvelun omille sivuille ja oman verkkotunnuksen DNS-hallintaan.
 
 ![kuva30](/pictures/h5/zonerdns9.png)
+
 ![kuva31](/pictures/h5/zonerdns10x.png)
+
 ![kuva32](/pictures/h5/zonerdns11x.png)
+
 ![kuva33](/pictures/h5/zonerdns12x.png)
+
 ![kuva34](/pictures/h5/zonerdns13.png)
+
 ![kuva35](/pictures/h5/zonerdns14x.png)
 
 ---
@@ -228,6 +233,7 @@ Aloitin taas kirjautumalla Zoner palvelun omille sivuille ja oman verkkotunnukse
 Taas valitaan `Uusi tietue`, täytetään 'Tyyppi' A, nimeksi haluttu alidomain, tässä esimerkissä nyt 'vasen', TTL 600, oman virtuaalipalvelimen IP-osoite 'Kohde IP' kohtaan ja 'Lisää'.
 
 ![kuva36](/pictures/h5/zonerdns24x.png)
+
 ![kuva37](/pictures/h5/zonerdns25x.png)
 
 ---
