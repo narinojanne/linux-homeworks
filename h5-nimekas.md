@@ -55,6 +55,8 @@ Tämän jälkeen pitää vielä suorittaa sähköpostiosoitteen vahvistaminen, j
 
 ## Verkkotunnuksen ohjaaminen
 
+Tässä käytin apuna [Zonerin](https://www.zoner.fi/tuki/webhotellit/dns-tietueet/?_gl=1*2win1m*_up*MQ..*_ga*MTgzMzA4NzE2NC4xNzU4NTU5Mzc4*_ga_89HZR2ECZP*czE3NTg1NTkzNzckbzEkZzEkdDE3NTg1NjExOTIkajEwJGwwJGgxNjA3OTczNjU2) tukisivuilta löytyvää ohjetta.
+
 Tehtävässä piti ohjata verkkotunnus omalle koneelle, joten aloitetaan kirjautumalla palveluun.
 
 ![kuva10](/pictures/h5/zonerdns9.png)
@@ -129,6 +131,8 @@ Lopuksi DNS-tietueissa on jäljellä vain ne mitkä lisäsin.
 Nyt verkkotunnusten `jannenarinen.com` ja `www.jannenarinen.com` pitäisi ohjautua omalle virtuaalipalvelimelleni, mutta vasta kun palvelimellani on tehty konfiguraatioita.
 
 ## Apachen konfiguroiminen virtuaalipalvelimella
+
+Tässä käytin apuna [JohannaHeinosen](https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-03092025.md) Apache2 materiaalia sekä [TeroKarvisen](https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/) Name Based Virtual Hosts on Apache materiaalia.
 
 Ensin otin SSH-yhteyden palvelimelle.  
 Yhteyden jälkeen tein .conf tiedoston `jannenarinen.com` verkkotunnukselle, jonka perusteella apache ohjaa palvelimen verkkolikennettä.
@@ -320,8 +324,114 @@ Ja nyt uudet alisivut pitäisi toimia `curl vasen.jannenarinen.com` ja `curl oik
 Kokeillaan.
 
 ![kuva45](/pictures/h5/apache10.png)
+
 ![kuva46](/pictures/h5/apache11.png)
 
 Toimii!
 
 ---
+
+# Host ja dig
+
+Yksi tehtävä oli tutkia DNS-tietoja komennoilla `host` ja `dig` sekä samalla tutustua kyseisiin komentoihin.
+
+## Komento dig
+
+Komennolla `dig` voidaan kysyä esimerkiksi IP-osoitteita DNS-palvelimilta. Sitä käytetään myös DNS-ongelmien tarkistamiseen ja vianmääritykseen.
+
+Minulla ei ollut asennettuna `dig` komentoa tai pakettia joka sisältää tuon komennon, joten asensin [geeksforgeeks](https://www.geeksforgeeks.org/linux-unix/dig-command-in-linux-with-examples/) mukaan `dnsutils` paketin, joka sisältää `dig` komennon.
+
+```
+sudo apt-get install dnsutils
+```
+
+Asennus kuitenkin halusi asentaa paketin nimeltä `bind9-utils`, tämä paketti mainitaan myös `geeksforgeeks` sivulla, niin ajattelin tämän olevan oikea paketti ja hyväksyin asennuksen.
+
+![kuva47](/pictures/h5/dig1.png)
+
+---
+
+Tein ensin testiksi komennon `dig jannenarinen.com` nähdäkseni miltä vastaus näyttää.  
+Ensimmäisenä huomasin, että vastaus osiossa näytti siltä, että osoite `jannenarinen.com` olisi sama kuin `localhost` omalla paikallisella koneellani vaikka olin rekisteröinyt verkkotunnuksen ja ohjannut sen liikenteen virtuaalipalvelimelleni ja kaikki toimi testatessa ihan oikein.
+
+![kuva48](/pictures/h5/dig2.png)
+
+---
+
+Päätin kokeilla saman `terokarvinen.com` osoitteella ja tutkia tämän osoitteen vastausta.  
+Nyt vastauksessa näytti olevan ihan oikea IP-osoite.
+
+![kuva49](/pictures/h5/dig3.png)
+
+---
+
+Pähkäilin, että hakuihin saattaa vaikuttaa se, että tein niitä omalta virtuaalipalvelimeltani, joten vaihdoin koneen omaan paikalliseen koneeseeni ja kokeilin uudestaan `dig jannenarinen.com`.  
+Nyt vastaukseen tuli oikea IP-osoite, eli tulokseen taisi vaikuttaa se, että ajoin komennon tuolta virtuaalipalvelimelta johon olin ohjannut verkkotunnuksen liikenteen.
+
+![kuva50](/pictures/h5/dig4.png)
+
+---
+
+Vertailuna `Zoner` weppiliittymässä näkyviin asetuksiin vastauksessa näyttäisi olevan samat arvot kuin `dig` vastauksessa.  
+Verkkotunnus on `jannenarinen.com`, TTL on 600, tietueen tyyppi on A ja IP-osoite.
+
+![kuva51](/pictures/h5/dig4o.png) ![kuva52](/pictures/h5/dig4.png)
+
+---
+
+Kokeilin vielä myös `dig google.com`. Tällä perus asetuksella komento näyttäisi palauttavan samoja tietoja.
+
+![kuva52](/pictures/h5/dig5.png)
+
+---
+
+Kun komentoon lisätään `+short` niin vastauksena saadaan pelkkä IP-osoite.
+
+![kuva53](/pictures/h5/dig6.png)
+
+---
+
+Ja `+noall +answer` lisäys palauttaa verkkotunnuksen, TTL arvon, luokan (IN=internet), tietue tyypin ja IP-osoitteen. [stackoverflow](https://stackoverflow.com/questions/20297531/meaning-of-the-five-fields-of-the-answer-section-in-dig-query)
+
+![kuva54](/pictures/h5/dig7.png)
+
+---
+
+`ANY` lisäyksellä saa näkyviin ainakin sähköpostiliikennettä ohjaavista MX-tietueista tietoa.
+
+![kuva55](/pictures/h5/dig8.png)
+
+---
+
+## Komento host
+
+`host` komennolla voi ainakin löytää jonkin tietyn verkkotunnuksen IP-osoitteen. Tällä komennolla voi löytää myös yksityiskohtaisia tietoja verkkotunnuksesta oikeilla optioilla käytettynä.
+
+Komento `host jannenarinen.com` palauttaa IP-osoitteen.
+
+![kuva56](/pictures/h5/host1.png)
+
+---
+
+Komento `host ip-osoite` näyttäisi palauttavan tietoja palvelimesta johon IP-osoite osoittaa.
+
+![kuva57](/pictures/h5/host2.png)
+
+---
+
+`host -a verkkotunnus` palauttaa tietoa monista eri tietue tyypeistä.
+
+![kuva58](/pictures/h5/host3.png)
+
+---
+
+# Lähteet
+
+- Tehtävänanto: https://terokarvinen.com/linux-palvelimet/#h5-nimekas
+- Johanna Heinonen Apache2: https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-03092025.md
+- Tero Karvinen Name Based Virtual Hosts on Apache – Multiple Websites to Single IP Address: https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/
+- Zoner: https://www.zoner.fi/
+- Zoner DNS-tietuiden muokkaus: https://www.zoner.fi/tuki/webhotellit/dns-tietueet/?_gl=1*2win1m*_up*MQ..*_ga*MTgzMzA4NzE2NC4xNzU4NTU5Mzc4*_ga_89HZR2ECZP*czE3NTg1NTkzNzckbzEkZzEkdDE3NTg1NjExOTIkajEwJGwwJGgxNjA3OTczNjU2
+- dig command in Linux with examples: https://www.geeksforgeeks.org/linux-unix/dig-command-in-linux-with-examples/
+- Meaning of the five fields of the ANSWER SECTION in dig query: https://stackoverflow.com/questions/20297531/meaning-of-the-five-fields-of-the-answer-section-in-dig-query
+- host command in Linux with examples: https://www.geeksforgeeks.org/linux-unix/host-command-in-linux-with-examples/
