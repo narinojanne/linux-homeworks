@@ -295,7 +295,7 @@ micro /home/janne/public-sites/oikea.jannenarinen.com/index.html
 
 ---
 
-Sitten pitää muokata /etc/hosts tiedostoa.
+Sitten pitää muokata /etc/hosts tiedostoa ja lisätä alisivujen ohjaukset.
 
 ```
 sudoedit /etc/hosts
@@ -345,7 +345,7 @@ Minulla ei ollut asennettuna `dig` komentoa tai pakettia joka sisältää tuon k
 sudo apt-get install dnsutils
 ```
 
-Asennus kuitenkin halusi asentaa paketin nimeltä `bind9-utils`, tämä paketti mainitaan myös `geeksforgeeks` sivulla, niin ajattelin tämän olevan oikea paketti ja hyväksyin asennuksen.
+Asennus kuitenkin halusi asentaa paketin nimeltä `bind9-utils`, ajattelin tämän olevan oikea paketti ja hyväksyin asennuksen.
 
 ![kuva47](/pictures/h5/dig1.png)
 
@@ -375,23 +375,25 @@ Nyt vastaukseen tuli oikea IP-osoite, eli tulokseen taisi vaikuttaa se, että aj
 Vertailuna `Zoner` weppiliittymässä näkyviin asetuksiin vastauksessa näyttäisi olevan samat arvot kuin `dig` vastauksessa.  
 Verkkotunnus on `jannenarinen.com`, TTL on 600, tietueen tyyppi on A ja IP-osoite.
 
-![kuva51](/pictures/h5/dig4o.png) ![kuva52](/pictures/h5/dig4.png)
+![kuva51](/pictures/h5/dig4o.png)
 
 ---
 
-Kokeilin vielä myös `dig google.com`. Tällä perus asetuksella komento näyttäisi palauttavan samoja tietoja.
+Kokeilin vielä myös `dig google.com`.  
+Tällä perus asetuksella komento näyttäisi palauttavan samoja tietoja.
 
 ![kuva52](/pictures/h5/dig5.png)
 
 ---
 
-Kun komentoon lisätään `+short` niin vastauksena saadaan pelkkä IP-osoite.
+Kun komentoon lisätään `+short` niin vastauksena saadaan pelkkiä IP-osoitteita. Googlella IP-osoite näyttäisi vaihtelevan.
 
 ![kuva53](/pictures/h5/dig6.png)
 
 ---
 
-Ja `+noall +answer` lisäys palauttaa verkkotunnuksen, TTL arvon, luokan (IN=internet), tietue tyypin ja IP-osoitteen. [stackoverflow](https://stackoverflow.com/questions/20297531/meaning-of-the-five-fields-of-the-answer-section-in-dig-query)
+Ja `+noall +answer` lisäys palauttaa verkkotunnuksen, TTL arvon, luokan (IN=internet), tietue tyypin ja IP-osoitteen.  
+Täältä löysin tähän tietoa [stackoverflow](https://stackoverflow.com/questions/20297531/meaning-of-the-five-fields-of-the-answer-section-in-dig-query).
 
 ![kuva54](/pictures/h5/dig7.png)
 
