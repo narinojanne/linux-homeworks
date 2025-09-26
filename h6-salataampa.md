@@ -254,7 +254,7 @@ Ensin aloitin moduuli virheen ratkaisun etsimisen ja se löytyi heti aiemmin tek
 
 ---
 
-Ja koska tekoälyyn ei voi sokeasti luottaa, niin tarkistin onko apachen moduuleissa olemassa tuote moduulia.  
+Ja koska tekoälyyn ei voi sokeasti luottaa, niin tarkistin onko Apachen moduuleissa olemassa tuota moduulia.  
 `cd /etc/apache2/mods-available/` ja `ls` niin sieltä kyllä löytyi tuo `headers module`.
 
 ![kuva36](/pictures/h6/lets36.png)
@@ -273,7 +273,7 @@ sudo a2enmod headers
 
 ---
 
-Uudelleenkäynnistys ei vieläkään onnistunut, joten taas ajoin `journactl -xeu apache2.service` komennon ja nyt huomasin, että rivillä 15 on jokin virhe joka viittaa liian moneen argumenttiin jossain komennossa.
+Uudelleenkäynnistys ei vieläkään onnistunut, joten taas ajoin `journactl -xeu apache2.service` komennon ja nyt huomasin, että conf tiedoston rivillä 15 on jokin virhe joka viittaa liian moneen argumenttiin jossain komennossa.
 
 ![kuva39](/pictures/h6/lets39.png)
 
@@ -285,7 +285,7 @@ Avasin conf tiedoston ja hetken pähkäilyn jälkeen ajattelin, että `Strict-Tr
 
 ---
 
-Tämä korjasi ongelman ja apache uudelleenkäynnistyi.
+Tämä korjasi ongelman ja Apache uudelleenkäynnistyi.
 
 ![kuva41](/pictures/h6/lets41.png)
 
