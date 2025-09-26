@@ -2,7 +2,12 @@
 
 ## Tiivistelmä
 
-- VirtualHostiin polut sertifikaattitiedostoihin
+### [Apache](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#configexample)
+
+- VirtualHostiin tarvitaan polut sertifikaattitiedostoihin, jotta salaus onnistuu
+
+### [Let'sEncrypt](https://letsencrypt.org/how-it-works/)
+
 - Let's Encrypt ja ACME-protokolla mahdollistaa https-palvelimen perustamisen ja automaattisen luotettavien varmenteiden hankkimisen
 - Varmenteet ilman ihmisen toimia
 - Varmenteiden pyytäminen, uusiminen ja peruuttaminen yksinkertaista valtuutetulla tilillä
