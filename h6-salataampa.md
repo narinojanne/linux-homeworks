@@ -1,9 +1,17 @@
-# Salataan
+# Salataampa verkkoliikennettä
+
+## Tiivistelmä
+
+- VirtualHostiin polut sertifikaattitiedostoihin
+- Let's Encrypt ja ACME-protokolla mahdollistaa https-palvelimen perustamisen ja automaattisen luotettavien varmenteiden hankkimisen
+- Varmenteet ilman ihmisen toimia
+- Varmenteiden pyytäminen, uusiminen ja peruuttaminen yksinkertaista valtuutetulla tilillä
 
 ## Let's Encrypt
 
 Tehtävänä oli hankkia ja asentaa palvelimelle ilmainen TLS-sertifikaatti Let's Encryptiltä sekä todentaa, että se toimii.  
-Ihan ensiksi varmistin, että käytössä olevat verkkotunnukseni toimivat ja näkyvät selaimessa sekä `curl` komennolla.
+Ihan ensiksi varmistin, että käytössä olevat verkkotunnukseni toimivat ja näkyvät selaimessa sekä `curl` komennolla.  
+Tässä käytin lähteenä omia muistiinpanojani Teron luennolta.
 
 Ajoin terminaalissa komennot `curl jannenarinen.com` ja `curl www.jannenarinen.com` sekä kokeilin selaimella molemmat osoitteet ja ne näyttivät toimivan.
 
@@ -18,7 +26,7 @@ Alidomainien ohjaukset olin tehnyt ilman www-etuliitettä, joten `www.oikea.jann
 
 Seuraavaksi otin SSH-yhteyden palvelinkoneeseen ja suoritin päivityskomennot `sudo apt-get update` ja `sudo apt-get dist-upgrade`.  
 Sitten olikin aika alkaa asentamaan `certbot` joka automatisoi TLS-sertifikaatin luomisen ja asetukset.  
-Päätin kokeilla samaa järjestystä kuin luennolla Tero esimerkissä näytti eli ensin reikä tulimuuriin `https` liikennettä varten.
+Päätin kokeilla samaa järjestystä mitä Tero käytti luennolla esimerkissä, eli ensin reikä tulimuuriin `https` liikennettä varten.
 
 ```
 sudo ufw allow 443/tcp
@@ -97,7 +105,7 @@ Terminaalissa `curl jannenarinen.com` kertoo, että sivu on siirretty `https://j
 
 ---
 
-Ja `curl https://jannenarinen.com` näyttää taas sivun sisällön oikein.
+Ja `curl https://www.jannenarinen.com` näyttää taas sivun sisällön oikein.
 
 ![kuva17](/pictures/h6/lets17.png)
 
@@ -174,7 +182,10 @@ Kirjauduin `Zoner` palveluun ja kävin lisäämässä DNS-hallinnassa CAA-tietue
 
 ---
 
-Sitten kokeilin [SSLLabs](https://www.ssllabs.com/ssltest/) testin uudestaan ja tuloksena oli taas A, mutta nyt lisäyksenä oli tullut maininta CAA:sta.
+Sitten kokeilin [SSLLabs](https://www.ssllabs.com/ssltest/) testin uudestaan ja tuloksena oli taas A, mutta nyt lisäyksenä oli tullut maininta CAA:sta.  
+Jotta sain uudet testitulokset, piti painaa `Clear cache` yhteenvedon yläpuolella.
+
+![kuva31](/pictures/h6/lets31.png)
 
 ![kuva27](/pictures/h6/lets27.png)
 
@@ -182,12 +193,120 @@ Sitten kokeilin [SSLLabs](https://www.ssllabs.com/ssltest/) testin uudestaan ja 
 
 ---
 
+Googletin tuota `HSTS` asetuksen käyttöönottoa ja löysin [geekforgeeks](https://www.geeksforgeeks.org/web-tech/how-to-enable-http-strict-transport-security-hsts-for-apache/) sivuilta jonkilaisen ohjeen jota ajattelin yrittää soveltaa, koska tuossa ohjeessa konfiguroidaan myös `nginx`:n asetuksia, mutta kokeilin vain tuota `Apache2` asetusten tekemistä.
+
+Avataan `-le-ssl.conf` tiedosto.
+
+```
+sudoedit /etc/apache2/sites-available/jannenarinen.com-le-ssl.conf
+```
+
+Lisätään rivi
+
+```
+Header always set Strict-Transport-Security max-age=604800; includeSubDomains
+```
+
+Tässä asetetaan `Strict-Transport-Security` otsikko, joka ilmoittaa selaimelle, että kaikki yhteydet pitää olla `https` yhteyksiä.
+
+`max-age=604800` on aika sekunteina, jonka aikana selain ottaa `https`:n käyttöön sivustolla, tässä ajaksi on määritelty viikko.
+
+`includeSubDomains` määrittää, että `HSTS` koskee myös alidomaineja.
+
+![kuva32](/pictures/h6/lets32.png)
+
+---
+
+Tähän `HSTS`:ään olisi vielä argumentti `preloads` olemassa, mutta siitä kerrotaan, että sitä ei kannata käyttää oletuksena joten jätin sen tässä vielä pois. Lisää infoa aiheesta: [HSTS Preload](https://hstspreload.org/).
+
+---
+
+Sitten vaan Apachen uudelleenkäynnistys.  
+Apache ei halunnut uudelleenkäynnistyä vaan ilmoitti, että joku virhe on jossain.  
+Yritin selvittää virhettä komennolla
+
+```
+systemctl status apache2.service
+```
+
+Tästä sain selville vain, että virhe olisi jossain tiedostossa `/etc/apache2/sites-enabled/` hakemistossa ja siellä virheellinen komento `Header`.
+
+![kuva33](/pictures/h6/lets33.png)
+
+---
+
+Ajoin myös komennon
+
+```
+journactl -xeu apache2.service
+```
+
+Tästä selvisi sama asia, mutta kun levensi ruutua niin sain enemmän tekstiä esiin ja `jannenarinen.com-le-ssl.conf` tiedostossa on jokin kirjoitusvirhe tai jokin moduuli puuttuu palvelimen asetuksista.  
+Tiedostossa oli myös virhe rivillä 15, mutta tämän huomasin vielä myöhemmin.
+
+![kuva34](/pictures/h6/lets34.png)
+
+---
+
+Ensin aloitin moduuli virheen ratkaisun etsimisen ja se löytyi heti aiemmin tekemästäni hausta `how to enable hsts apache2` tekoälyn luomasta osiosta, jossa mainittiin `headers modulen` sallimisesta.
+
+![kuva35](/pictures/h6/lets35.png)
+
+---
+
+Ja koska tekoälyyn ei voi sokeasti luottaa, niin tarkistin onko apachen moduuleissa olemassa tuote moduulia.  
+`cd /etc/apache2/mods-available/` ja `ls` niin sieltä kyllä löytyi tuo `headers module`.
+
+![kuva36](/pictures/h6/lets36.png)
+
+---
+
+Sallitaan moduuli ja sen jälkeen se löytyy hakemistosta `/etc/apache2/mods-enabled/`.
+
+```
+sudo a2enmod headers
+```
+
+![kuva37](/pictures/h6/lets37.png)
+
+![kuva38](/pictures/h6/lets38.png)
+
+---
+
+Uudelleenkäynnistys ei vieläkään onnistunut, joten taas ajoin `journactl -xeu apache2.service` komennon ja nyt huomasin, että rivillä 15 on jokin virhe joka viittaa liian moneen argumenttiin jossain komennossa.
+
+![kuva39](/pictures/h6/lets39.png)
+
+---
+
+Avasin conf tiedoston ja hetken pähkäilyn jälkeen ajattelin, että `Strict-Transport-Security` tarvitsee "" merkit, koska siinä on enemmän kuin yksi argumentti, toisin kuin `geeksforgeeks` ohjeessa jota käytin apuna.
+
+![kuva40](/pictures/h6/lets40.png)
+
+---
+
+Tämä korjasi ongelman ja apache uudelleenkäynnistyi.
+
+![kuva41](/pictures/h6/lets41.png)
+
+---
+
+Kävin taas tekemässä SSLLabs testin ja tulos oli edelleen A, mutta nyt `Strict Transport Security (HSTS)` virhe oli muuttunut ilmoitukseksi, että aika on liian lyhyt. Eli ainakin jotain sain tässä säädettyä ja korjattua.
+
+![kuva42](/pictures/h6/lets42.png)
+
+![kuva43](/pictures/h6/lets43.png)
+
+---
+
 # Lähteet
 
-- Tehtävänanto: https://terokarvinen.com/linux-palvelimet/#h6-salataampa
-- Let's Encrypt: https://letsencrypt.org
-- Let's Encrypt How It Works: https://letsencrypt.org/how-it-works/
-- Apache Basic Configuration Example: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#configexample
-- Let's Encrypt CAA: https://letsencrypt.org/fi/docs/caa/
-- Community Let's Encrypt: https://community.letsencrypt.org/t/migration-from-ocsp-to-crl/239517
-- Mozilla Strict Transport Security: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Strict-Transport-Security
+- Tehtävänanto: https://terokarvinen.com/linux-palvelimet/#h6-salataampa. Katsottu: 26.9.2025.
+- Let's Encrypt: https://letsencrypt.org. Katsottu: 26.9.2025.
+- Let's Encrypt How It Works: https://letsencrypt.org/how-it-works/. Katsottu: 26.9.2025.
+- Apache Basic Configuration Example: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html#configexample. Katsottu: 26.9.2025.
+- Let's Encrypt CAA: https://letsencrypt.org/fi/docs/caa/. Katsottu: 26.9.2025.
+- Community Let's Encrypt: https://community.letsencrypt.org/t/migration-from-ocsp-to-crl/239517. Katsottu: 26.9.2025.
+- Mozilla Strict Transport Security: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Strict-Transport-Security. Katsottu: 26.9.2025.
+- SSL Labs SSL Server Test: https://www.ssllabs.com/ssltest/. Katsottu 26.9.2025.
+- HSTS Preload: https://hstspreload.org/. Katsottu 26.9.2025.
