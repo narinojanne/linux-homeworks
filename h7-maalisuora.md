@@ -65,7 +65,7 @@ Ja teksti tulostui terminaaliin
 
 Kopioimalla scriptin sijaintiin `/usr/local/bin/` scripti saadaan ajettavaksi suoraan tiedostonimellä sekä kaikkien muiden käyttäjien ajettavaksi myös.
 
-![kuva6](/pictures/h7/bash6.png)
+![kuva6](/pictures/h7/bash6x.png)
 
 ---
 
