@@ -25,7 +25,7 @@ Lisäsin rivit.
 echo "Hei maailma"
 ```
 
-1[kuva2](/pictures/h7/bash2.png)
+![kuva2](/pictures/h7/bash2.png)
 
 ---
 
