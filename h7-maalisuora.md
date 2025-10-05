@@ -29,6 +29,10 @@ echo "Hei maailma"
 
 ---
 
+Ensimmäisellä rivillä kerrotaan minkä kielen scripti ajetaan, tässä tapauksessa `bash`. Tätä riviä kutsutaan myös nimellä `shebang`.
+
+---
+
 Tein scriptin ajettavaksi antamalla suoritusoikeudet tiedostoon.
 
 ```
@@ -56,6 +60,12 @@ Koska scriptin sijainti ei `$PATH`in tiedossa, pitää kertoa, että ajettava sc
 Ja teksti tulostui terminaaliin
 
 ![kuva5](/pictures/h7/bash5.png)
+
+---
+
+Kopioimalla scriptin sijaintiin `/usr/local/bin/` scripti saadaan ajettavaksi suoraan tiedostonimellä sekä kaikkien muiden käyttäjien ajettavaksi myös.
+
+![kuva6](/pictures/h7/bash6.png)
 
 ---
 
