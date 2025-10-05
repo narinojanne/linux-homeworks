@@ -76,3 +76,13 @@ Asennus valmis ja odottaa uudelleen käynnistystä.
 
 ![kuva12](/pictures/newVM17.png)
 Jouduin pakottamaan virtuaalikoneen sammutuksen sulkemalla virtuaalikoneen oikean yläkulman rastista ja valitsemalla Power off the machine.
+
+---
+
+# Lähteet
+
+- Tehtävänanto: https://terokarvinen.com/linux-palvelimet/#h1-oma-linux
+- Virtual Box lataus: https://www.virtualbox.org/wiki/Downloads
+- Tero Karvinen: Install Debian on Virtualbox - Updated 2024: https://terokarvinen.com/2021/install-debian-on-virtualbox/
+- Johanna Heinonen: How to Install Linux to Virtualbox?: https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-20082025.md
+- Virtual Box Forum: Missing Dependencies for VBox 7.0.6 Installation: https://forums.virtualbox.org/viewtopic.php?t=108582
