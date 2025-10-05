@@ -107,7 +107,8 @@ print ("Hei maailma")
 
 ---
 
-Nyt `shebang` rivillä kerrotaan, että halutaan ajaa python kielen scripti.
+Nyt `shebang` rivillä kerrotaan, että halutaan ajaa python kielen scripti.  
+En tällä kertaa yksilöinyt erikseen `python3` joka olisi varmaankin varmempi scriptin ajamisessa, mutta tämä toimi myös näin.
 
 ---
 
@@ -134,6 +135,70 @@ python3 heimaailma.py
 Teksti tulostui odotetusti.
 
 ![kuva12](/pictures/h7/python6.png)
+
+---
+
+### C++
+
+Kolmanneksi valitsin `C++` kielen scriptin. `C++` kielen scriptit pitää ensin kääntää, että niitä voi ajaa.
+
+Ensin tarkistin onko `C++` kääntäjä asennettuna. Se oli myös jo asennettuna.
+
+```
+g++ --version
+```
+
+![kuva13](/pictures/h7/c++1.png)
+
+---
+
+Tein tiedoston scriptille.
+
+```
+micro heimaailma.cpp
+```
+
+![kuva14](/pictures/h7/c++2.png)
+
+---
+
+Lisäsin scriptin. Nyt ei tarvita `shebang` riviä, koska scripti käännetään ennen ajamista.
+
+```
+#include <iostream>
+int main() {
+    std::cout << "Hei C++ maailma" << std::endl;
+    return 0;
+}
+```
+
+![kuva15](/pictures/h7/c++3.png)
+
+---
+
+Scriptin kääntäminen.
+
+```
+g++ heimaailma.cpp -o heimaailmac
+```
+
+![kuva16](/pictures/h7/c++4.png)
+
+---
+
+Ja scriptin ajaminen vaatii taas `./` jolla kerrotaan, että scripti sijaitsee tässä hakemistossa, jossa ollaan tällä hetkellä.
+
+```
+./heimaailmac
+```
+
+![kuva17](/pictures/h7/c++5.png)
+
+---
+
+Ja teksti tulostui niin kuin pitikin.
+
+![kuva18](/pictures/h7/c++6.png)
 
 ---
 
