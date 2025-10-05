@@ -6,7 +6,8 @@ Tehtävänä oli kirjoittaa ja ajaa "Hei maailma" kolmella eri kielellä.
 
 ### Bash
 
-Aloitin tekemällä ihan vain `Bash` kielellä ohjelman, joka tulostaa tekstin `"Hei maailma"`.
+Aloitin tekemällä ihan vain `Bash` kielellä ohjelman, joka tulostaa tekstin `"Hei maailma"`.  
+Bash scriptejä ajettaessa ei tarvitse erikseen komentaa `bash` koska Linux tunnistaa automaattisesti nämä komennot.
 
 Ensin tein tiedoston scriptille.
 
@@ -72,7 +73,8 @@ Scriptin pitäisi nyt tulla myös kaikkien muiden käyttäjien ajettavaksi.
 
 ### Python
 
-Seuraavaksi päätin tehdä `Python` kielellä saman ohjelman.
+Seuraavaksi päätin tehdä `Python` kielellä saman ohjelman.  
+`Python` scriptejä ajetaan komentamalla `python3` ja sitten script tiedoston nimi.
 
 Aloitin tarkistamalla onko `python` asennettuna ja olihan se.
 
