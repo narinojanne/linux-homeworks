@@ -75,7 +75,7 @@ Asennus menossa.
 Asennus valmis ja odottaa uudelleen käynnistystä.
 
 ![kuva12](/pictures/newVM17.png)
-Jouduin pakottamaan virtuaalikoneen sammutuksen sulkemalla virtuaalikoneen oikean yläkulman rastista ja valitsemalla Power off the machine.
+Jouduin pakottamaan virtuaalikoneen sammutuksen sulkemalla virtuaalikoneen oikean yläkulman rastista ja valitsemalla Power off the machine, jonka jälkeen virtuaalikone käynnistyi normaalisti.
 
 ---
 
