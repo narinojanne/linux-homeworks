@@ -63,9 +63,75 @@ Ja teksti tulostui terminaaliin
 
 ---
 
-Kopioimalla scriptin sijaintiin `/usr/local/bin/` scripti saadaan ajettavaksi suoraan tiedostonimellä sekä kaikkien muiden käyttäjien ajettavaksi myös.
+Kopioimalla scriptin sijaintiin `/usr/local/bin/` scripti saadaan ajettavaksi suoraan tiedostonimellä.  
+Scriptin pitäisi nyt tulla myös kaikkien muiden käyttäjien ajettavaksi.
 
 ![kuva6](/pictures/h7/bash6x.png)
+
+---
+
+### Python
+
+Seuraavaksi päätin tehdä `Python` kielellä saman ohjelman.
+
+Aloitin tarkistamalla onko `python` asennettuna ja olihan se.
+
+```
+python3 --version
+```
+
+![kuva7](/pictures/h7/python1.png)
+
+---
+
+Taas tehdään tiedosto scriptille.
+
+```
+micro heimaailma.py
+```
+
+![kuva8](/pictures/h7/python2.png)
+
+---
+
+Lisätään `shebang` ja komento joka tulostaa taas tekstin `Hei maailma` terminaaliin.
+
+```
+#!/bin/python
+print ("Hei maailma")
+```
+
+![kuva9](/pictures/h7/python3.png)
+
+---
+
+Nyt `shebang` rivillä kerrotaan, että halutaan ajaa python kielen scripti.
+
+---
+
+Tehdään scripti ajettavaksi antamalla suoritusoikeudet tiedostoon.
+
+```
+chmod a+x heimaailma.py
+```
+
+![kuva10](/pictures/h7/python4.png)
+
+---
+
+Ja ajetaan scripti. Nyt komennetaan `python3` koska kyseessä on `python` kielen scripti.
+
+```
+python3 heimaailma.py
+```
+
+![kuva11](/pictures/h7/python5.png)
+
+---
+
+Teksti tulostui odotetusti.
+
+![kuva12](/pictures/h7/python6.png)
 
 ---
 
