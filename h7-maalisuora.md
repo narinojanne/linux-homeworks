@@ -6,8 +6,8 @@ Tehtävänä oli kirjoittaa ja ajaa "Hei maailma" kolmella eri kielellä.
 
 ### Bash
 
-Aloitin tekemällä ihan vain `Bash` kielellä ohjelman, joka tulostaa tekstin `"Hei maailma"`.  
-Bash scriptejä ajettaessa ei tarvitse erikseen komentaa `bash` koska Linux tunnistaa automaattisesti nämä komennot.
+Aloitin tekemällä ihan vain `Bash` ohjelman, joka tulostaa tekstin `"Hei maailma"`.  
+`Bash` scriptejä ajettaessa ei tarvitse erikseen komentaa `bash` koska Linux tunnistaa automaattisesti nämä komennot.
 
 Ensin tein tiedoston scriptille.
 
@@ -196,9 +196,122 @@ Ja scriptin ajaminen vaatii taas `./` jolla kerrotaan, että scripti sijaitsee t
 
 ---
 
-Ja teksti tulostui niin kuin pitikin.
+Ja teksti tulostui niin kuin pitikin. C++ scriptille ei tarvinnut lisätä erikseen suoritus oikeuksia.
 
 ![kuva18](/pictures/h7/c++6.png)
+
+---
+
+## Uusi komento Linuxiin kaikkien ajettavaksi
+
+Tässä tehtävässä piti tehdä itse uusi komento ja laittaa se Linuxiin niin, että kaikki käyttäjät voivat ajaa sitä.
+
+### Uusi komento
+
+Ensin tein uuden käyttäjän ilman `sudo` oikeuksia.
+
+```
+sudo adduser narin
+```
+
+![kuva19](/pictures/h7/uusi1.png)
+
+![kuva33](/pictures/h7/uusi19.png)
+
+---
+
+Tein `bash` komennon joka tervehtii nykyistä käyttäjää ja kertoo sen hetkisen päivämäärän ja kellonajan.
+
+```
+micro tervehdi.sh
+```
+
+![kuva20](/pictures/h7/uusi2.png)
+
+![kuva21](/pictures/h7/uusi3.png)
+
+---
+
+Kokeilin, että komento toimii niin kuin pitääkin.
+
+```
+./tervehdi.sh
+```
+
+![kuva22](/pictures/h7/uusi5.png)
+
+---
+
+Seuraavaksi vaihdoin käyttäjää ja kokeilin voinko ajaa uuden tervehdys komennon toisella käyttäjällä.
+
+```
+su narin
+```
+
+![kuva23](/pictures/h7/uusi6.png)
+
+![kuva24](/pictures/h7/uusi7.png)
+
+![kuva25](/pictures/h7/uusi9.png)
+
+![kuva26](/pictures/h7/uusi10.png)
+
+---
+
+Ei onnistunut vielä.
+
+---
+
+Vaihdoin käyttäjää uudelleen ja kokeilin, että komento vielä löytyy ja toimii.
+
+```
+su janne
+```
+
+![kuva27](/pictures/h7/uusi11.png)
+
+![kuva28](/pictures/h7/uusi12.png)
+
+![kuva29](/pictures/h7/uusi13.png)
+
+---
+
+Komento oli vielä olemassa ja toimi myös.
+
+---
+
+Kopioin uuden komennon `/usr/local/bin/` hakemistoon, josta se on kaikkien käyttäjien ajettavissa. Tämä pitää tehdä `sudo` oikeuksilla.  
+Kokeilin myös, että komennon voi ajaa ilman `./`.
+
+```
+sudo cp tervehdi.sh /usr/local/bin/
+```
+
+```
+tervehdi.sh
+```
+
+![kuva30](/pictures/h7/uusi15.png)
+
+---
+
+Taas käyttäjän vaihto ja uusi kokeilu komennon ajamiseksi.
+
+![kuva31](/pictures/h7/uusi17.png)
+
+---
+
+Se toimii!
+
+---
+
+Kokeilin myös ajaa aiemmin tekemäni `heimaailma.sh` jonka myös kopioin kaikkien ajettavaksi aikaisemmin.
+
+![kuva32](/pictures/h7/uusi18.png)
+
+---
+
+Sekin toimii!
 
 ---
 
