@@ -281,7 +281,7 @@ Komento oli vielä olemassa ja toimi myös.
 ---
 
 Kopioin uuden komennon `/usr/local/bin/` hakemistoon, josta se on kaikkien käyttäjien ajettavissa. Tämä pitää tehdä `sudo` oikeuksilla.  
-Kokeilin myös, että komennon voi ajaa ilman `./`.
+Kokeilin myös, että komennon voi ajaa ilman `./` alkua.
 
 ```
 sudo cp tervehdi.sh /usr/local/bin/
@@ -305,7 +305,7 @@ Se toimii!
 
 ---
 
-Kokeilin myös ajaa aiemmin tekemäni `heimaailma.sh` jonka myös kopioin kaikkien ajettavaksi aikaisemmin.
+Kokeilin myös ajaa aiemmin tekemäni `heimaailma.sh` jonka kopioin kaikkien ajettavaksi aikaisemmin.
 
 ![kuva32](/pictures/h7/uusi18.png)
 
