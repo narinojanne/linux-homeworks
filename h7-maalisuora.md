@@ -317,6 +317,114 @@ Sekin toimii!
 
 ## Ratkaise vanha arvioitava laboratorioharjoitus soveltuvin osin
 
+Tehtävänä oli ratkaista jokin vanha arvioitava laboratorioharjoitus soveltuvin osin.  
+Päätin yrittää [Final Lab for Linux Palvelimet 2024 Spring](https://terokarvinen.com/2024/arvioitava-laboratorioharjoitus-2024-linux-palvelimet/) tehtävästä tehdä edes jotain, koska aikani ei tällä kertaa riittänyt kokonaan tämän ratkaisuun.  
+Päätin käyttää paikallista virtuaalikonettani, joka oli jo aikaisemmin tehty kurssin alussa ja johon olin luonut jo yhden uuden käyttäjän ilman `sudo` oikeuksia itseni lisäksi.
+
+### Raportti turvaan
+
+Yksi tehtävistä oli tallentaa raportti kotihakemistoon nimellä `report/index.md` niin, että se näkyy komenolla `ls /home/*/report/index.md` sekä suojata raportti `Linux` oikeuksilla niin, että vain oma käyttäjä pystyy katselemaan raporttia.
+
+Aloitin vaihtamalla käyttäjää ja tekemällä hakemiston `/home/narin/report/`.
+
+![kuva33](/pictures/h7/labra1.png)
+
+---
+
+Tein hakemistoon pyydetyn tiedoston ja lisäsin sisältöä.
+
+![kuva34](/pictures/h7/labra4.png)
+
+![kuva35](/pictures/h7/labra5.png)
+
+---
+
+Kokeilin, että tiedosto löytyy komennolla `ls /home/*/report/index.md`.
+
+![kuva36](/pictures/h7/labra7.png)
+
+---
+
+Vaihdoin käyttäjää ja kokeilin näkyykö tiedosto muille käyttäjille.
+
+![kuva37](/pictures/h7/labra8.png)
+
+---
+
+Tiedosto näkyy jos käyttäjällä on `sudo` oikeudet, mutta ilman `sudoa` pääsy on estetty.
+
+---
+
+Vaihdoin käyttäjän taas ja tarkistin tiedoston oikeudet, jonka jälkeen poistin lukuoikeuden muilta.
+
+```
+chmod o-r /home/narin/report/index.md
+```
+
+Sekä luku- ja kirjoitusoikeudet ryhmiltä.
+
+```
+chmod g-rw /home/narin/report/index.md
+```
+
+![kuva38](/pictures/h7/labra9.png)
+
+![kuva39](/pictures/h7/labra10.png)
+
+---
+
+Taas vaihdoin käyttäjää ja kokeilin näkyykö tiedosto edelleen muille.
+
+![kuva40](/pictures/h7/labra11.png)
+
+---
+
+Tiedosto näkyy edelleen jos käyttäjällä on `sudo` oikeudet.
+
+---
+
+Päätin tehdä vielä yhden uuden käyttäjän ilman `sudo` oikeuksia ja kokeilla näkyykö tiedosto myös tälle käyttäjälle.
+
+![kuva41](/pictures/h7/labra12.png)
+
+![kuva42](/pictures/h7/labra13.png)
+
+---
+
+Nyt käyttäjä ilman `sudo` oikeuksia ei pystynyt näkemään tiedostoa.
+
+---
+
+### Howdy
+
+Yhtenä tehtävänä oli tehdä kaikkien käyttäjien käyttöön komento `howdy`.
+
+Ensin tein tiedoston komennolle, joka tulostaa käyttäjän nimen ja nykyhetken muodossa: `viikonpäivä, päivämäärä ja kellonaika` sekä annoin suoritusoikeudet tiedostoon kaikille.
+
+![kuva43](/pictures/h7/labra14.png)
+
+![kuva44](/pictures/h7/labra15.png)
+
+![kuva45](/pictures/h7/labra16.png)
+
+---
+
+Sen jälkeen kopioin tiedoston kaikkien ajettavaksi hakemistoon `/usr/local/bin/` ja kokeilin, että komento toimii.
+
+![kuva46](/pictures/h7/labra18.png)
+
+---
+
+Sitten kokeilin vielä kahdella muulla käyttäjällä, että komennon voi ajaa myös muut käyttäjät.
+
+![kuva47](/pictures/h7/labra19.png)
+
+![kuva48](/pictures/h7/labra20.png)
+
+---
+
+Tämän enempää en nyt tällä kerralla saanut tehtyä, mutta labraharjoituksessa olevat Apache-palvelin ja SSH-palvelin tehtäviin liittyviä juttuja ollaankin kurssilla jonkin verran tehty.
+
 ---
 
 #Lähteet
@@ -325,3 +433,4 @@ Sekin toimii!
 - Tero Karvinen: Hello World Python3, Bash, C, C++, Go, Lua, Ruby, Java – Programming Languages on Ubuntu 18.04: https://terokarvinen.com/2018/hello-python3-bash-c-c-go-lua-ruby-java-programming-languages-on-ubuntu-18-04/
 - Tero Karvinen: Shell Scripting: https://terokarvinen.com/2007/12/04/shell-scripting-4/
 - Johanna Heinonen: Linux Shell Scripting Basics: https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-01102025.md
+- Vanha arvioitava laboratorioharjoitus: Final Lab for Linux Palvelimet 2024 Spring: https://terokarvinen.com/2024/arvioitava-laboratorioharjoitus-2024-linux-palvelimet/
