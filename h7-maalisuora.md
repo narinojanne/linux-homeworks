@@ -315,6 +315,10 @@ Sekin toimii!
 
 ---
 
+## Ratkaise vanha arvioitava laboratorioharjoitus soveltuvin osin
+
+---
+
 #Lähteet
 
 - Tehtävänanto: https://terokarvinen.com/linux-palvelimet/#h7-maalisuora
