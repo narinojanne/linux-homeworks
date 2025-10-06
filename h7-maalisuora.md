@@ -423,7 +423,7 @@ Sitten kokeilin vielä kahdella muulla käyttäjällä, että komennon voi ajaa 
 
 ---
 
-Tämän enempää en nyt tällä kerralla saanut tehtyä, mutta labraharjoituksessa olevat Apache-palvelin ja SSH-palvelin tehtäviin liittyviä juttuja ollaankin kurssilla jonkin verran tehty.
+Tämän enempää en nyt tällä kerralla saanut tehtyä, mutta labraharjoituksen Apache- ja SSH-palvelin tehtäviin liittyviä juttuja ollaankin kurssilla jonkin verran tehty.
 
 ---
 
